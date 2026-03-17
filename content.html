@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content &mdash; Shahzeb Qazi</title>
+</head>
+<body>
+
+<header>
+<pre>
+     _            _
+ ___| |_ __ _ ___(_)
+/ __| __/ _` |_ / |
+\__ \ || (_| |/ /| |
+|___/\__\__, /___|_|
+           |_|
+</pre>
+</header>
+
+<nav>
+[ <a href="index.html">Home</a> ]
+| [ <a href="links.html">Links</a> ]
+| [ <a href="content.html?page=projects">Projects</a> ]
+| [ <a href="content.html?page=papers">Papers</a> ]
+| [ <a href="content.html?page=cv">CV</a> ]
+| [ <a href="content.html?page=blog">Blog</a> ]
+</nav>
+
+<hr>
+
+<main>
+<h1 id="page-title">Loading...</h1>
+<pre id="page-content">Fetching content...</pre>
+</main>
+
+<hr>
+
+<footer>
+<p>&copy; 2026 Shahzeb Qazi. All rights reserved.</p>
+<p><small>Best viewed in any browser.</small></p>
+</footer>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var page = params.get("page") || "projects";
+  var allowed = ["projects", "papers", "cv", "blog"];
+
+  var titleEl = document.getElementById("page-title");
+  var contentEl = document.getElementById("page-content");
+
+  if (allowed.indexOf(page) === -1) {
+    titleEl.textContent = "404";
+    contentEl.textContent = "Page not found. Use the navigation above.";
+    return;
+  }
+
+  titleEl.textContent = page.charAt(0).toUpperCase() + page.slice(1);
+  document.title = titleEl.textContent + " — Shahzeb Qazi";
+
+  fetch("content/" + page + ".txt")
+    .then(function (res) {
+      if (!res.ok) throw new Error(res.status);
+      return res.text();
+    })
+    .then(function (text) {
+      contentEl.textContent = text;
+    })
+    .catch(function () {
+      contentEl.textContent = "Content not available yet. Check back later.";
+    });
+})();
+</script>
+
+</body>
+</html>

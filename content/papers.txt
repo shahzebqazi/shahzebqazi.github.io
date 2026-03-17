@@ -1,0 +1,10 @@
+PAPERS
+======
+
+[placeholder]
+
+No papers published yet. This section will contain links to
+research papers, technical write-ups, and formal publications.
+
+---
+Last updated: 2026-03-17
