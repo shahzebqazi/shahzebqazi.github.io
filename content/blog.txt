@@ -1,14 +1,1 @@
-BLOG
-====
-
-[placeholder]
-
-No posts yet. Future topics will include:
-- Haskell in production: lessons learned
-- Building a local AI inference stack on consumer hardware
-- Rollback netcode in Godot
-- Audio engineering for small-venue bands
-- NixOS as a daily driver
-
----
-Last updated: 2026-03-17
+Coming soon.
