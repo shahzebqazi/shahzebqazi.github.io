@@ -3,33 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Projects, papers, CV, and blog — sqazi.sh">
 <title>Content &mdash; sqazi.sh</title>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<header>
+<header class="site-header">
 <h1>sqazi</h1>
+<nav class="site-nav" aria-label="Site">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="content.html?page=projects">Projects</a></li>
+<li><a href="content.html?page=papers">Papers</a></li>
+<li><a href="content.html?page=cv">CV</a></li>
+<li><a href="content.html?page=blog">Blog</a></li>
+</ul>
+</nav>
 </header>
 
-<nav>
-<a href="index.html">Home</a> /
-<a href="links.html">Links</a> /
-<a href="content.html?page=projects">Projects</a> /
-<a href="content.html?page=papers">Papers</a> /
-<a href="content.html?page=cv">CV</a> /
-<a href="content.html?page=blog">Blog</a>
-</nav>
+<hr class="site-divider">
 
-<hr>
-
-<main>
+<main class="site-main" id="main">
+<section aria-labelledby="page-title">
 <h1 id="page-title">Loading...</h1>
 <pre id="page-content">Fetching content...</pre>
+</section>
 </main>
 
-<hr>
+<hr class="site-divider">
 
-<footer>
+<footer class="site-footer">
 </footer>
 
 <script>
@@ -37,18 +42,34 @@
   var params = new URLSearchParams(window.location.search);
   var page = params.get("page") || "projects";
   var allowed = ["projects", "papers", "cv", "blog"];
+  var labels = { projects: "Projects", papers: "Papers", cv: "CV", blog: "Blog" };
 
   var titleEl = document.getElementById("page-title");
   var contentEl = document.getElementById("page-content");
+  var navLinks = document.querySelectorAll(".site-nav a[href^='content.html']");
+
+  function setNavCurrent() {
+    for (var i = 0; i < navLinks.length; i++) {
+      var link = navLinks[i];
+      var hrefPage = new URL(link.href, window.location.href).searchParams.get("page");
+      if (hrefPage === page) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    }
+  }
 
   if (allowed.indexOf(page) === -1) {
     titleEl.textContent = "404";
     contentEl.textContent = "Page not found. Use the navigation above.";
+    document.title = "404 — sqazi.sh";
     return;
   }
 
-  titleEl.textContent = page.charAt(0).toUpperCase() + page.slice(1);
+  titleEl.textContent = labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
   document.title = titleEl.textContent + " — sqazi.sh";
+  setNavCurrent();
 
   fetch("content/" + page + ".txt")
     .then(function (res) {

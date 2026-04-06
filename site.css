@@ -1,0 +1,148 @@
+/* sqazi.sh — shared layout */
+
+:root {
+  color-scheme: light dark;
+  --bg: #faf9f7;
+  --fg: #1a1917;
+  --muted: #5c5a56;
+  --border: #d9d6d0;
+  --accent: #2563eb;
+  --font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  --measure: 38rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141312;
+    --fg: #ebe8e3;
+    --muted: #a39e96;
+    --border: #3d3a36;
+    --accent: #60a5fa;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.55;
+}
+
+body {
+  margin: 0;
+  padding: 1.25rem clamp(1rem, 4vw, 2rem) 2.5rem;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.site-header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.site-nav li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.65rem;
+  color: var(--muted);
+  user-select: none;
+}
+
+.site-nav a[aria-current="page"] {
+  font-weight: 600;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.site-main {
+  max-width: var(--measure);
+  margin-top: 1.5rem;
+}
+
+.site-main > section + section {
+  margin-top: 2.25rem;
+}
+
+.site-main h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.site-main h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.site-main p {
+  margin: 0 0 0.85rem;
+}
+
+.site-main dl {
+  margin: 0;
+}
+
+.site-main dt {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.site-main dt:first-child {
+  margin-top: 0;
+}
+
+.site-main dd {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.site-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0 0;
+  max-width: var(--measure);
+}
+
+#page-content {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}

@@ -3,41 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shahzeb Qazi — software, Haskell, local AI inference, and more. Toronto.">
 <title>sqazi.sh</title>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<header>
+<header class="site-header">
 <h1>sqazi</h1>
+<nav class="site-nav" aria-label="Site">
+<ul>
+<li><a href="index.html" aria-current="page">Home</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="content.html?page=projects">Projects</a></li>
+<li><a href="content.html?page=papers">Papers</a></li>
+<li><a href="content.html?page=cv">CV</a></li>
+<li><a href="content.html?page=blog">Blog</a></li>
+</ul>
+</nav>
 </header>
 
-<nav>
-<a href="index.html">Home</a> /
-<a href="links.html">Links</a> /
-<a href="content.html?page=projects">Projects</a> /
-<a href="content.html?page=papers">Papers</a> /
-<a href="content.html?page=cv">CV</a> /
-<a href="content.html?page=blog">Blog</a>
-</nav>
+<hr class="site-divider">
 
-<hr>
+<main class="site-main" id="main">
+<section aria-labelledby="about-heading">
+<h1 id="about-heading">About</h1>
+<p>I write software in Toronto. Mostly Haskell&mdash;web services, command-line tools, CI pipelines&mdash;built around pure functional architecture. The other half of my time goes to local AI inference: getting large models to run fast on consumer hardware.</p>
+<p>Outside of that I maintain Linux infrastructure, mess with window managers, and build 2D fighting games in Godot. I play bass and guitar and do audio engineering professionally.</p>
+</section>
 
-<main>
-<h1>About</h1>
-
-<p>I write software in Toronto. Mostly Haskell&mdash;web services, command-line tools, CI pipelines&mdash;built around pure functional architecture. The other half of my time goes to local AI inference: getting large models to run fast on consumer hardware with high shared-memory configurations (64GB+).</p>
-
-<p>Outside of that I maintain Linux infrastructure, mess with window managers, and build 2D fighting games in Godot. I play bass and guitar and do audio engineering for a band.</p>
-
+<section aria-labelledby="contact-heading">
+<h2 id="contact-heading">Contact</h2>
 <p>Reach me at <a href="mailto:code@sqazi.sh">code@sqazi.sh</a>.</p>
+</section>
 
-<h2>Support</h2>
+<section aria-labelledby="support-heading">
+<h2 id="support-heading">Support</h2>
 <p><a href="mailto:code@sqazi.sh">Donate</a></p>
+</section>
 </main>
 
-<hr>
+<hr class="site-divider">
 
-<footer>
+<footer class="site-footer">
 </footer>
 
 </body>

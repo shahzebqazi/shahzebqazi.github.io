@@ -3,27 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Links — GitHub, GitLab, projects, and social.">
 <title>Links &mdash; sqazi.sh</title>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<header>
+<header class="site-header">
 <h1>sqazi</h1>
+<nav class="site-nav" aria-label="Site">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="links.html" aria-current="page">Links</a></li>
+<li><a href="content.html?page=projects">Projects</a></li>
+<li><a href="content.html?page=papers">Papers</a></li>
+<li><a href="content.html?page=cv">CV</a></li>
+<li><a href="content.html?page=blog">Blog</a></li>
+</ul>
+</nav>
 </header>
 
-<nav>
-<a href="index.html">Home</a> /
-<a href="links.html">Links</a> /
-<a href="content.html?page=projects">Projects</a> /
-<a href="content.html?page=papers">Papers</a> /
-<a href="content.html?page=cv">CV</a> /
-<a href="content.html?page=blog">Blog</a>
-</nav>
+<hr class="site-divider">
 
-<hr>
-
-<main>
-<h1>Links</h1>
+<main class="site-main" id="main">
+<section aria-labelledby="links-heading">
+<h1 id="links-heading">Links</h1>
 
 <p><a href="mailto:code@sqazi.sh">code@sqazi.sh</a></p>
 
@@ -52,11 +56,12 @@
 <dt><a href="https://instagram.com/">Instagram</a></dt>
 <dd>Band photos, gear, live shows.</dd>
 </dl>
+</section>
 </main>
 
-<hr>
+<hr class="site-divider">
 
-<footer>
+<footer class="site-footer">
 </footer>
 
 </body>
