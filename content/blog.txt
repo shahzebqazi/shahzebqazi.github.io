@@ -1,1 +1,3 @@
-Coming soon.
+Long-form posts are not mirrored on this static page yet. When they exist, summaries or links will show up here.
+
+For now, the home page and Links page are the canonical “what I do” surfaces on this site.

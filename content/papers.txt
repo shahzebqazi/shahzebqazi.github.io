@@ -1,1 +1,3 @@
-Coming soon.
+Public writing and citations will appear here when there is something to share.
+
+If you are looking for code or notes in the meantime, see the GitHub and GitLab links on the main site.

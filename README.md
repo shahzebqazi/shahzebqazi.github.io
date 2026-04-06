@@ -1,8 +1,8 @@
 # sqazi
 
-I write software in Toronto. Mostly Haskell — web services, command-line tools, CI pipelines — built around pure functional architecture. The other half of my time goes to local AI inference: getting large models to run fast on consumer hardware.
+I build software in Toronto, mostly in Haskell: web services, CLI tools, and CI pipelines, with an emphasis on pure functional design. I also spend a lot of time on local AI inference—making large models practical on desktop hardware.
 
-Outside of that I maintain Linux infrastructure, mess with window managers, and build 2D fighting games in Godot. I play bass and guitar and do audio engineering professionally.
+Beyond that I run Linux systems, tinker with window managers, and work on 2D fighting games in Godot. I play bass and guitar and do audio engineering.
 
 ## Links
 

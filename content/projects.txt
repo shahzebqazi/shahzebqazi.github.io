@@ -1,1 +1,3 @@
-Coming soon.
+Selected work and experiments will be listed here. Broad areas: Haskell services and tooling, CI, local LLM inference and tooling around it, Linux ops, and Godot game projects.
+
+Nothing published on this page yet—check the GitHub link on the Links page for live repositories in the meantime.
