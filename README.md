@@ -8,7 +8,7 @@ Beyond that I run Linux systems, tinker with window managers, and work on 2D fig
 
 - [sqazi.sh](https://sqazi.sh) — personal site
 - [github.com/shahzebqazi](https://github.com/shahzebqazi) — source code, dotfiles, open-source work
-- [gitlab.com/shahzebqazi](https://gitlab.com/shahzebqazi) — CI/CD pipelines and private project mirrors
+- [GitLab — CI/CD and private mirrors](https://gitlab.com/destroyerofworlds)
 - [Gankmid Co. Studios](https://www.gankmid.co/) — game development
 - [Iconoclast Audio](https://www.iconoclastaud.io/) — mixing, mastering, and DSP
 - [Reverb — gear shop](https://reverb.com/shop/gearacquisitionsyndrome/) — DSP pedals and gear
