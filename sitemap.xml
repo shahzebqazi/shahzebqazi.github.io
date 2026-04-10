@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sqazi.sh/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sqazi.sh/links.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sqazi.sh/projects.html</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sqazi.sh/papers.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sqazi.sh/cv.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sqazi.sh/blog.html</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+</urlset>
