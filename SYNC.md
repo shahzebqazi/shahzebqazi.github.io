@@ -18,7 +18,7 @@ Three things share your bio and need to stay consistent:
 
 ## When you add a project, paper, blog post, or update your CV
 
-1. Edit the relevant file in `/content/` (e.g. `content/projects.txt`).
+1. Edit the relevant file in `/content/` (e.g. `content/projects.html` for the Projects page, or `content/papers.txt`, etc.).
 2. Push `shahzebqazi.github.io`. No changes needed in the profile repo — those pages are only on the website.
 
 ## When you update links
