@@ -27,7 +27,7 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 | Path | Role |
 |------|------|
 | `index.html` | Home / About |
-| `links.html` | Outbound links |
+| `links/index.html` | Outbound links (`/links/`; `links.html` redirects here) |
 | `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/<name>.txt`) |
 | `content/*.txt` | Page bodies (plain text; shown inside `<pre>`) |
 | `README.md` | Plain-text mirror of bio/links for **GitHub profile** sync (see `SYNC.md`) |
