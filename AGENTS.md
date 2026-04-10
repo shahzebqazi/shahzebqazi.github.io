@@ -27,7 +27,7 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 | Path | Role |
 |------|------|
 | `index.html` | Home / About |
-| `links.html` | Redirect to the **links** site (separate repo; see `SYNC.md`) |
+| `links.html` | Outbound links |
 | `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
 | `content/projects.html` | Projects portfolio (HTML cards; styles injected once) |
 | `content/*.txt` | Papers, CV, Blog bodies (plain text; monospace block) |
@@ -40,7 +40,7 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 - **Prefer minimal HTML** unless the user asks for richer structure or styling. Do not add CSS or heavy layout changes unless requested.
 - **Bio / “About” copy:** If you change the story on the home page, update **`README.md`** here in plain text and remind the user to sync **`shahzebqazi/shahzebqazi`** if their profile should match (`SYNC.md`).
 - **Projects list:** Edit **`content/projects.html`** (grouped sections, live URLs). Refresh periodically against GitHub (`has_pages` on repos) and spot-check URLs.
-- **Links:** Maintain the standalone **links** repository (not this repo); navigation here points to **`links.html`** (redirect). Mirror to profile **`README.md`** when you want parity.
+- **Links:** **`links.html`** for the site; mirror to profile **`README.md`** when you want parity.
 
 ## Git and deploy
 
