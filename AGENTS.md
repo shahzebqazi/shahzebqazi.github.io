@@ -20,7 +20,11 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 - **Static GitHub Pages** site: plain HTML files at the repo root, no bundler.
 - **Custom domain:** `sqazi.sh` (see `CNAME`). Live site is deployed from the **`main`** branch.
-- **“Dynamic” pages:** `content.html?page=…` loads content via `fetch`. **Projects** uses `content/projects.html` (HTML + scoped CSS injected by script); **Papers, CV, Blog** use `content/*.txt` as plain text in a monospace block. There is no server-side rendering.
+- **Content sections:** `projects.html`, `papers.html`, `cv.html`, and `blog.html` are the canonical URLs. They are generated (or assembled) so crawlers see full HTML in the first response. Run `node scripts/generate-content-pages.mjs` after changing section bodies.
+- **Projects body:** **`content/projects.html`** holds the portfolio markup (grouped cards + scoped CSS). The generator inlines it into root **`projects.html`** with shared nav and SEO tags.
+- **Papers, CV, Blog:** Plain text in **`content/*.txt`**, inlined inside `<pre>` in the generated pages.
+- **Legacy URL:** `content.html?page=…` redirects to the matching static page (deprecated; `noindex`).
+- **Outbound links:** Maintained in a **separate** repository (its own GitHub Pages site). This repo’s **`links.html`** redirects there; see **`SYNC.md`**.
 
 ## Repo map
 
@@ -28,9 +32,12 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 |------|------|
 | `index.html` | Home / About |
 | `links.html` | Redirect to the **links** site (separate repo; see `SYNC.md`) |
-| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
-| `content/projects.html` | Projects portfolio (HTML cards; styles injected once) |
-| `content/*.txt` | Papers, CV, Blog bodies (plain text; monospace block) |
+| `projects.html`, `papers.html`, `cv.html`, `blog.html` | Section pages (regenerate with `node scripts/generate-content-pages.mjs`) |
+| `content.html` | Redirects `?page=` to the static pages above (deprecated; `noindex`) |
+| `content/projects.html` | Projects portfolio (HTML + scoped style; source for `projects.html`) |
+| `content/*.txt` | Papers, CV, Blog bodies; `content/projects.txt` is a plain-text mirror / legacy list |
+| `scripts/generate-content-pages.mjs` | Builds root section HTML from `content/projects.html` and `content/*.txt` |
+| `robots.txt`, `sitemap.xml` | Crawling and discovery |
 | `README.md` | Plain-text mirror of bio/links for **GitHub profile** sync (see `SYNC.md`) |
 | `SYNC.md` | How to keep profile README, home page, and links aligned |
 | `.github/workflows/deploy.yml` | Deploy to GitHub Pages on push to `main` |
@@ -39,8 +46,8 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 - **Prefer minimal HTML** unless the user asks for richer structure or styling. Do not add CSS or heavy layout changes unless requested.
 - **Bio / “About” copy:** If you change the story on the home page, update **`README.md`** here in plain text and remind the user to sync **`shahzebqazi/shahzebqazi`** if their profile should match (`SYNC.md`).
-- **Projects list:** Edit **`content/projects.html`** (grouped sections, live URLs). Refresh periodically against GitHub (`has_pages` on repos) and spot-check URLs.
-- **Links:** Maintain the standalone **links** repository (not this repo); navigation here points to **`links.html`** (redirect). Mirror to profile **`README.md`** when you want parity.
+- **Projects list:** Edit **`content/projects.html`** (grouped sections, live URLs), then run **`node scripts/generate-content-pages.mjs`**. Refresh periodically against GitHub (`has_pages` on repos) and spot-check URLs.
+- **Links:** Maintain the standalone **links** repository (not this repo); **`links.html`** here only redirects if the published URL changes. Mirror to profile **`README.md`** when you want parity.
 
 ## Git and deploy
 
@@ -50,5 +57,5 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 ## Checklist before finishing a change
 
 - [ ] Any new copy that belongs in the profile README is noted or updated per `SYNC.md`.
-- [ ] `content/projects.html` and any `content/*.txt` used by navigation are up to date.
+- [ ] `content/projects.html` and any `content/*.txt` used by navigation are up to date; run `node scripts/generate-content-pages.mjs` when those bodies change.
 - [ ] New tasks or discoveries are reflected on [Project #14](https://github.com/users/shahzebqazi/projects/14) when appropriate.
