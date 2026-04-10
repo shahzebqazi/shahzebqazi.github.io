@@ -1,8 +1,18 @@
 # sqazi
 
-I build software in Toronto, mostly in Haskell: web services, CLI tools, and CI pipelines, with an emphasis on pure functional design. I also spend a lot of time on local AI inference—making large models practical on desktop hardware.
+I am a FOSS mastering engineer and programmer in Toronto, Ontario. My career goals are mostly in music; the paragraphs below are the other threads I am actively pursuing.
 
-Beyond that I run Linux systems, tinker with window managers, and work on 2D fighting games in Godot. I play bass and guitar and do audio engineering.
+**Audio.** Mixing and mastering, DSP, and gear through [Iconoclast Audio](https://www.iconoclastaud.io/) and [my Reverb shop](https://reverb.com/shop/gearacquisitionsyndrome/) (DSP pedals and gear).
+
+**Math and theory.** Category theory, symbolic reasoning, dimensionality reduction, Cauchy sequences, Hilbert spaces, dagger symmetries, and complex analysis—often with audio as the motivating lens.
+
+**AI and agents.** AI tooling and agent workflows (I primarily use Cursor). I am interested in HCI and UX research around a "hand-made feel" and whether feature extraction from that idea could matter for understanding AI agents.
+
+**Systems.** Bleeding-edge Linux distros and hardware: CachyOS with Cosmic Desktop on an AMD Strix Halo machine, alongside a MacBook Pro.
+
+**Games.** [Gankmid Co. Studios](https://www.gankmid.co/).
+
+Email [code@sqazi.sh](mailto:code@sqazi.sh). Also on [Matrix](https://matrix.to/#/@metalmasteringengineer:matrix.org), [Mastodon](https://social.devilplan.com/@willy), and [Instagram](https://www.instagram.com/kongposhmosh/).
 
 ## Links
 
