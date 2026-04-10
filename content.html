@@ -44,10 +44,12 @@
   if (allowed.indexOf(page) === -1) {
     titleEl.textContent = "404";
     contentEl.textContent = "Page not found. Use the navigation above.";
+    document.title = "404 — sqazi.sh";
     return;
   }
 
-  titleEl.textContent = page.charAt(0).toUpperCase() + page.slice(1);
+  var labels = { projects: "Projects", papers: "Papers", cv: "CV", blog: "Blog" };
+  titleEl.textContent = labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
   document.title = titleEl.textContent + " — sqazi.sh";
 
   fetch("content/" + page + ".txt")

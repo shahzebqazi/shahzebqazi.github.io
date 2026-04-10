@@ -1,1 +1,111 @@
-Coming soon.
+Portfolio — sites hosted on GitHub Pages (live URL + source repo).
+
+ampache-plugin-song-pit
+  Live: https://shahzebqazi.github.io/ampache-plugin-song-pit/
+  Repo: https://github.com/shahzebqazi/ampache-plugin-song-pit
+  Song Pit: Ampache plugin + magic-link upload SPA
+
+crud-app
+  Live: (no public Pages build responding yet)
+  Repo: https://github.com/shahzebqazi/crud-app
+
+devops-for-the-horde
+  Live: https://sqazi.sh/devops-for-the-horde/
+  Repo: https://github.com/shahzebqazi/devops-for-the-horde
+  Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows.
+
+gankmid-wave-survival
+  Live: https://shahzebqazi.github.io/gankmid-wave-survival/
+  Repo: https://github.com/shahzebqazi/gankmid-wave-survival
+  Dungeon Prototype — Wave Survival design docs and dev builds
+
+gulrez-moodboard
+  Live: https://shahzebqazi.github.io/gulrez-moodboard/
+  Repo: https://github.com/shahzebqazi/gulrez-moodboard
+
+hopfield-networks
+  Live: https://shahzebqazi.github.io/hopfield-networks/
+  Repo: https://github.com/shahzebqazi/hopfield-networks
+  Inductive Hopfield networks in Haskell + Three.js energy landscape demo
+
+iconoclast
+  Live: https://shahzebqazi.github.io/iconoclast/
+  Repo: https://github.com/shahzebqazi/iconoclast
+  Iconoclast Audio — website hub; audio projects tracked on GitLab (configure separately).
+
+kashmiri-language-poetry
+  Live: https://shahzebqazi.github.io/kashmiri-language-poetry/
+  Repo: https://github.com/shahzebqazi/kashmiri-language-poetry
+  Static archive: Kashmiri language, ghazal form, bilingual poetry
+
+mastodon-cursor-agent
+  Live: https://shahzebqazi.github.io/mastodon-cursor-agent/
+  Repo: https://github.com/shahzebqazi/mastodon-cursor-agent
+  Cursor-friendly Mastodon posting toolkit: UTF-8 drafts, .env credentials, GitHub Pages docs.
+
+mhn-ai-agent-memory
+  Live: https://shahzebqazi.github.io/mhn-ai-agent-memory/
+  Repo: https://github.com/shahzebqazi/mhn-ai-agent-memory
+  AI agent memory using Modern Hopfield Networks — MCP server for Cursor, Claude Code, and other agents.
+
+miverna-ai-search-engine
+  Live: https://shahzebqazi.github.io/miverna-ai-search-engine/
+  Repo: https://github.com/shahzebqazi/miverna-ai-search-engine
+  Miverna AI search — Svelte UI, IR, macOS host (per repo description)
+
+mvi
+  Live: https://shahzebqazi.github.io/mvi/
+  Repo: https://github.com/shahzebqazi/mvi
+
+my-xmonad-config
+  Live: https://shahzebqazi.github.io/my-xmonad-config/
+  Repo: https://github.com/shahzebqazi/my-xmonad-config
+
+mystic-labs-ai
+  Live: https://sqazi.sh/mystic-labs-ai/
+  Repo: https://github.com/shahzebqazi/mystic-labs-ai
+
+openclaw-zergrush
+  Live: https://shahzebqazi.github.io/openclaw-zergrush/
+  Repo: https://github.com/shahzebqazi/openclaw-zergrush
+  Agent Swarm X — declarative system prompt modifiers for AI agent swarms
+
+pa2-car-plugin
+  Live: https://shahzebqazi.github.io/pa2-car-plugin/
+  Repo: https://github.com/shahzebqazi/pa2-car-plugin
+  Android Auto sandbox, PA2 × Auto UI mockup, UX research and design docs
+
+PowerAmpache2PluginTemplate
+  Live: (no public Pages build responding yet)
+  Repo: https://github.com/shahzebqazi/PowerAmpache2PluginTemplate
+
+psyop-ca-site
+  Live: https://shahzebqazi.github.io/psyop-ca-site/
+  Repo: https://github.com/shahzebqazi/psyop-ca-site
+  Static placeholder for psyop.ca (GitHub Pages)
+
+radicalize-music
+  Live: https://shahzebqazi.github.io/radicalize-music/
+  Repo: https://github.com/shahzebqazi/radicalize-music
+
+shahzebqazi.github.io
+  Live: https://sqazi.sh/
+  Repo: https://github.com/shahzebqazi/shahzebqazi.github.io
+  This personal site (raw semantic HTML).
+
+transcription-hotkey
+  Live: https://shahzebqazi.github.io/transcription-hotkey/
+  Repo: https://github.com/shahzebqazi/transcription-hotkey
+  Independent transcription hotkey project
+
+voice-key
+  Live: https://shahzebqazi.github.io/voice-key/
+  Repo: https://github.com/shahzebqazi/voice-key
+
+vst-ui
+  Live: https://shahzebqazi.github.io/vst-ui/
+  Repo: https://github.com/shahzebqazi/vst-ui
+
+wilder-public
+  Live: https://shahzebqazi.github.io/wilder-public/
+  Repo: https://github.com/shahzebqazi/wilder-public
