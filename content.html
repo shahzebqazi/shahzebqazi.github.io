@@ -24,7 +24,7 @@
 
 <main>
 <h1 id="page-title">Loading...</h1>
-<pre id="page-content">Fetching content...</pre>
+<div id="page-content">Fetching content...</div>
 </main>
 
 <hr>
@@ -44,6 +44,7 @@
   if (allowed.indexOf(page) === -1) {
     titleEl.textContent = "404";
     contentEl.textContent = "Page not found. Use the navigation above.";
+    contentEl.className = "page-content--plain";
     document.title = "404 — sqazi.sh";
     return;
   }
@@ -52,6 +53,36 @@
   titleEl.textContent = labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
   document.title = titleEl.textContent + " — sqazi.sh";
 
+  if (page === "projects") {
+    fetch("content/projects.html")
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        return res.text();
+      })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var styleEl = doc.getElementById("projects-inline-style");
+        if (styleEl && !document.getElementById("projects-inline-style")) {
+          document.head.appendChild(styleEl);
+        }
+        var root = doc.querySelector(".projects-page");
+        contentEl.className = "";
+        if (root) {
+          contentEl.innerHTML = "";
+          contentEl.appendChild(document.importNode(root, true));
+        } else {
+          contentEl.className = "page-content--plain";
+          contentEl.textContent = "Projects could not be loaded.";
+        }
+      })
+      .catch(function () {
+        contentEl.className = "page-content--plain";
+        contentEl.textContent = "Projects could not be loaded. Check back later.";
+      });
+    return;
+  }
+
+  contentEl.className = "page-content--plain";
   fetch("content/" + page + ".txt")
     .then(function (res) {
       if (!res.ok) throw new Error(res.status);
@@ -65,6 +96,17 @@
     });
 })();
 </script>
+
+<style>
+.page-content--plain {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0;
+}
+</style>
 
 </body>
 </html>

@@ -20,16 +20,17 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 - **Static GitHub Pages** site: plain HTML files at the repo root, no bundler.
 - **Custom domain:** `sqazi.sh` (see `CNAME`). Live site is deployed from the **`main`** branch.
-- **“Dynamic” pages:** `content.html?page=…` loads plain text from `content/*.txt` via `fetch` in the browser. There is no server-side rendering.
+- **“Dynamic” pages:** `content.html?page=…` loads content via `fetch`. **Projects** uses `content/projects.html` (HTML + scoped CSS injected by script); **Papers, CV, Blog** use `content/*.txt` as plain text in a monospace block. There is no server-side rendering.
 
 ## Repo map
 
 | Path | Role |
 |------|------|
 | `index.html` | Home / About |
-| `links/index.html` | Outbound links (`/links/`; `links.html` redirects here) |
-| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/<name>.txt`) |
-| `content/*.txt` | Page bodies (plain text; shown inside `<pre>`) |
+| `links/index.html` | Outbound links (`/links/`; root `links.html` redirects here) |
+| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
+| `content/projects.html` | Projects portfolio (HTML cards; styles injected once) |
+| `content/*.txt` | Papers, CV, Blog bodies (plain text; monospace block) |
 | `README.md` | Plain-text mirror of bio/links for **GitHub profile** sync (see `SYNC.md`) |
 | `SYNC.md` | How to keep profile README, home page, and links aligned |
 | `.github/workflows/deploy.yml` | Deploy to GitHub Pages on push to `main` |
@@ -38,8 +39,8 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 - **Prefer minimal HTML** unless the user asks for richer structure or styling. Do not add CSS or heavy layout changes unless requested.
 - **Bio / “About” copy:** If you change the story on the home page, update **`README.md`** here in plain text and remind the user to sync **`shahzebqazi/shahzebqazi`** if their profile should match (`SYNC.md`).
-- **Projects list:** Portfolio URLs and GitHub Pages listings live in **`content/projects.txt`** (and may need occasional refresh from GitHub API / manual checks).
-- **Links:** **`links.html`** for the site; mirror to profile **`README.md`** when the user wants parity.
+- **Projects list:** Edit **`content/projects.html`** (grouped sections, live URLs). Refresh periodically against GitHub (`has_pages` on repos) and spot-check URLs.
+- **Links:** **`links/index.html`** for the site; mirror to profile **`README.md`** when the user wants parity.
 
 ## Git and deploy
 
@@ -49,5 +50,5 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 ## Checklist before finishing a change
 
 - [ ] Any new copy that belongs in the profile README is noted or updated per `SYNC.md`.
-- [ ] `content/*.txt` files referenced by navigation exist and read well as plain text.
+- [ ] `content/projects.html` and any `content/*.txt` used by navigation are up to date.
 - [ ] New tasks or discoveries are reflected on [Project #14](https://github.com/users/shahzebqazi/projects/14) when appropriate.
