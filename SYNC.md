@@ -23,9 +23,13 @@ Three things share your bio and need to stay consistent:
 
 ## When you update links
 
-1. Edit `links/index.html` (served at `https://sqazi.sh/links/`). This repo does not use `shahzeb.me/links`.
-2. If you want the same links on your GitHub profile, add them to the bottom of `README.md`.
-3. Push both repos.
+Outbound links live in a **separate** repository (its own GitHub Pages site). Edit that repo’s HTML; keep **`links.html`** in this repo only if the redirect target URL changes (see below).
+
+1. Edit the links site in its repository (not `shahzebqazi.github.io`).
+2. If you want the same links on your GitHub profile, add them to the bottom of `README.md` in `shahzebqazi/shahzebqazi`.
+3. Push the links repo and the profile repo as needed.
+
+**Redirect in this repo:** `links.html` sends visitors to the published links site. By default it targets `https://shahzebqazi.github.io/links/` (adjust the `meta refresh`, `link rel="canonical"`, and body link if your links repo name or custom domain differs).
 
 ---
 
