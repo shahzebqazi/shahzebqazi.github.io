@@ -16,6 +16,7 @@ Beyond that I run Linux systems, tinker with window managers, and work on 2D fig
 - [Matrix](https://matrix.to/#/@metalmasteringengineer:matrix.org) — @metalmasteringengineer:matrix.org
 - [Mastodon](https://social.devilplan.com/@willy) — @willy@social.devilplan.com
 - [Instagram](https://www.instagram.com/kongposhmosh/) — @kongposhmosh
+- [YouTube](https://www.youtube.com/) — demos, music, long-form video
 
 ## Reach me
 
