@@ -1,3 +1,62 @@
-A full CV or résumé PDF is not hosted here yet.
+Willy S. Qazi
+Toronto, Ontario, Canada
+code@sqazi.sh · https://sqazi.sh
 
-For a concise overview of focus areas, see the About section on the home page. For code and activity, see GitHub (links on the Links page). For professional inquiries, email code@sqazi.sh.
+────────────────────────────────────────────────────────────────
+
+PROFESSIONAL SUMMARY
+
+FOSS-oriented mastering engineer and programmer based in Toronto. I combine hands-on audio work (mixing, mastering, DSP, and gear) with software practice across agents, tooling, and static web delivery. I am motivated by client-facing audio work, product-minded engineering, and clear communication—see Projects, Blog, and GitHub for representative work and writing.
+
+────────────────────────────────────────────────────────────────
+
+CORE STRENGTHS
+
+• Audio: mixing and mastering, DSP, plugin and workflow-oriented tooling; gear sales and client communication (Reverb shop).
+• Software: semantic HTML and static sites, GitHub Pages, scripting and small full-stack experiments; interest in AI tooling, agent workflows, and HCI/UX-adjacent exploration.
+• Systems: daily use of modern Linux desktop stacks alongside macOS; comfortable documenting workflows and shipping public repos.
+
+────────────────────────────────────────────────────────────────
+
+VENTURES & PROJECTS (selected)
+
+Gear Acquisition Syndrome — Reverb shop (2019–present)
+https://reverb.com/shop/gearacquisitionsyndrome/
+DSP pedals and gear; client-facing listings and sales.
+
+Iconoclast Audio (2024–present)
+https://www.iconoclastaud.io/
+Mixing, mastering, and DSP—professional audio services and related web presence.
+
+Mystic Labs (2025–present)
+https://sqazi.sh/mystic-labs-ai/
+AI-focused project hub on this site (see Projects page for context).
+
+Gankmid Co. Studios (2026–present)
+https://www.gankmid.co/
+Game studio and gaming infrastructure interests (see site and Projects for dev builds and design work).
+
+Additional programming, AI, music-tech, and Linux projects: https://sqazi.sh/content.html?page=projects
+Source and activity: https://github.com/shahzebqazi
+
+────────────────────────────────────────────────────────────────
+
+EDUCATION
+
+Toronto Metropolitan University (TMU)
+Honours Bachelor of Science, Computer Science
+Graduated with honours
+
+────────────────────────────────────────────────────────────────
+
+CREATIVE & PUBLIC WORK
+
+• Published music — streaming and catalog links are easiest to maintain via the Links page and project sites; inquire for specific credits or playlists.
+• Writing and notes: Blog (https://sqazi.sh/content.html?page=blog). The Papers page will list formal writing and citations when posted; for code and experiments in the meantime, see GitHub above.
+
+────────────────────────────────────────────────────────────────
+
+CONTACT
+
+Professional inquiries: code@sqazi.sh
+Site: https://sqazi.sh · Links hub: https://sqazi.sh/links.html
