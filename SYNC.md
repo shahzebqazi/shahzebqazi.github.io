@@ -23,7 +23,7 @@ Three things share your bio and need to stay consistent:
 
 ## When you update links
 
-1. Edit `links/index.html` (served at `/links/` on every domain that points at this site, e.g. `https://sqazi.sh/links/` and `https://shahzeb.me/links/`).
+1. Edit `links/index.html` (served at `https://sqazi.sh/links/`). This repo does not use `shahzeb.me/links`.
 2. If you want the same links on your GitHub profile, add them to the bottom of `README.md`.
 3. Push both repos.
 
@@ -58,27 +58,6 @@ www  CNAME  shahzebqazi.github.io.
 Add all four A records for the apex AND the www CNAME. GitHub will handle the redirect.
 
 After DNS propagates (up to 24h), go to the repo Settings → Pages and check "Enforce HTTPS."
-
----
-
-## Custom domain setup (shahzeb.me on DigitalOcean)
-
-The same GitHub Pages site can serve **multiple** custom domains. Add `shahzeb.me` in the repo **Settings → Pages → Custom domain** (in addition to `sqazi.sh` if it is already listed). The `CNAME` file in this repo can only list one primary hostname; extra domains are configured in the GitHub UI.
-
-In the [DigitalOcean control panel](https://cloud.digitalocean.com/), open **Networking → Domains**, select `shahzeb.me`, and add the same DNS GitHub expects for a user site apex:
-
-**Apex (shahzeb.me)** — four **A** records, hostname `@`, each pointing to one of:
-
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
-
-Optional **www** — one **CNAME** record: hostname `www`, value `shahzebqazi.github.io.` (trailing dot optional depending on the UI).
-
-After propagation, enable **Enforce HTTPS** for `shahzeb.me` in GitHub Pages settings if offered. The links page is then available at `https://shahzeb.me/links/` (same files as `https://sqazi.sh/links/`).
 
 ---
 
