@@ -7,7 +7,7 @@ Three things share your bio and need to stay consistent:
 | Surface | Repo | What renders |
 |---|---|---|
 | **GitHub profile** | `shahzebqazi/shahzebqazi` | `README.md` → shown on github.com/shahzebqazi |
-| **GitHub Pages / sqazi.sh** | `shahzebqazi/shahzebqazi.github.io` | `index.html` → served at shahzebqazi.github.io and sqazi.sh |
+| **sqazi.sh (AWS)** | `shahzebqazi/my-website` (private) | `index.html` → S3 + CloudFront at sqazi.sh |
 | **Dynamic content** | same repo, `/content/` | Projects: `content/projects.html`; Papers, CV, Blog: `content/*.txt` — fetched by `content.html?page=` |
 
 ---
@@ -23,13 +23,13 @@ Three things share your bio and need to stay consistent:
 ## When you add a project, paper, blog post, or update your CV
 
 1. Edit the relevant file in `/content/` (e.g. `content/projects.html` for the Projects page, or `content/papers.txt`, etc.).
-2. Push `shahzebqazi.github.io`. No changes needed in the profile repo — those pages are only on the website.
+2. Push `my-website` (merge to `main` deploys via GitHub Actions). No changes needed in the profile repo — those pages are only on the website.
 
 ## When you update links
 
 Outbound links live in a **separate** repository (its own GitHub Pages site). Edit that repo’s HTML; keep **`links.html`** in this repo only if the redirect target URL changes (see below).
 
-1. Edit the links site in its repository (not `shahzebqazi.github.io`).
+1. Edit the links site in its repository (not `my-website`).
 2. If you want the same links on your GitHub profile, add them to the bottom of `README.md` in `shahzebqazi/shahzebqazi`.
 3. Push the links repo and the profile repo as needed.
 
@@ -37,43 +37,19 @@ Outbound links live in a **separate** repository (its own GitHub Pages site). Ed
 
 ---
 
-## Custom domain setup (sqazi.sh)
+## Custom domain (sqazi.sh on AWS)
 
-The `CNAME` file in this repo tells GitHub Pages to serve from `sqazi.sh`.
-You still need to configure DNS with your registrar:
+DNS and TLS are managed in **`my-servers`** ([`moons/sol/`](https://github.com/shahzebqazi/my-servers/tree/main/moons/sol)) — S3, CloudFront, ACM; `sqazi.sh` DNS usually stays on DigitalOcean.
 
-### Option A — Apex domain (sqazi.sh)
-
-Add these A records pointing to GitHub's servers:
-
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
-
-### Option B — www subdomain (www.sqazi.sh)
-
-Add a CNAME record:
-
-```
-www  CNAME  shahzebqazi.github.io.
-```
-
-### Option C — Both (recommended)
-
-Add all four A records for the apex AND the www CNAME. GitHub will handle the redirect.
-
-After DNS propagates (up to 24h), go to the repo Settings → Pages and check "Enforce HTTPS."
+See **[`docs/AWS_MIGRATION.md`](docs/AWS_MIGRATION.md)** for setup, cutover from GitHub Pages, and registrar nameserver changes.
 
 ---
 
 ## Quick reference
 
 ```sh
-# push website changes
-cd "sqazi website."
+# push website changes (deploys to AWS on main)
+cd ~/Git/Personal/shahzebqazi.github.io   # or my-website after rename
 git add -A && git commit -m "update" && git push
 
 # push profile README changes (clone once, then reuse)

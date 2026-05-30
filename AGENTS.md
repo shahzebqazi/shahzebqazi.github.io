@@ -1,4 +1,4 @@
-# Agents guide — sqazi.sh (`shahzebqazi.github.io`)
+# Agents guide — sqazi.sh (`my-website`)
 
 This file is for **human and AI collaborators** who edit this repository. Follow it so changes stay consistent with how the site is built and deployed.
 
@@ -18,10 +18,11 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 ## What this site is
 
-- **Static GitHub Pages** site: plain HTML files at the repo root, no bundler.
-- **Custom domain:** `sqazi.sh` (see `CNAME`). Live site is deployed from the **`main`** branch.
+- **Static site** on **AWS**: S3 + CloudFront — infra in **`my-servers`** moon Sol ([`infra/README.md`](infra/README.md)).
+- **Custom domain:** `sqazi.sh` (DNS via DigitalOcean by default; see [`docs/AWS_MIGRATION.md`](docs/AWS_MIGRATION.md)).
+- **Deploy:** push to **`main`** → GitHub Actions (OIDC) → S3 sync + CloudFront invalidation.
 - **CV:** [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) — edit `content/cv.txt`; see [`docs/BRANDING.md`](docs/BRANDING.md).
-- **“Dynamic” pages:** `content.html?page=…` loads content via `fetch`. **Projects** uses `content/projects.html` (HTML + scoped CSS injected by script); **Papers, CV, Blog** use `content/*.txt` as plain text in a monospace block. There is no server-side rendering.
+- **“Dynamic” pages:** `content.html?page=…` loads content via `fetch`. **Projects** uses `content/projects.html`; **Papers, CV, Blog** use `content/*.txt`. No server-side rendering.
 
 ## Repo map
 
@@ -30,26 +31,31 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 | `index.html` | Home / About |
 | `links.html` | Redirect to the **links** site (separate repo; see `SYNC.md`) |
 | `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
-| `content/projects.html` | Projects portfolio (HTML cards; styles injected once) |
-| `content/*.txt` | Papers, CV, Blog bodies (plain text; monospace block) |
-| `README.md` | Plain-text mirror of bio/links for **GitHub profile** sync (see `SYNC.md`) |
-| `SYNC.md` | How to keep profile README, home page, and links aligned |
-| `.github/workflows/deploy.yml` | Deploy to GitHub Pages on push to `main` |
+| `content/projects.html` | Projects portfolio (HTML cards) |
+| `content/*.txt` | Papers, CV, Blog bodies |
+| `README.md` | Plain-text mirror for **GitHub profile** sync (`SYNC.md`) — not deployed to S3 |
+| `SYNC.md` | Profile README, home page, and links alignment |
+| `infra/README.md` | Pointer to `my-servers/moons/sol/` |
+| `docs/AWS_MIGRATION.md` | Short pointer to moon Sol setup |
+| `.github/workflows/deploy.yml` | Deploy to S3 + invalidate CloudFront |
 
 ## Editing rules
 
-- **Prefer minimal HTML** unless the user asks for richer structure or styling. Do not add CSS or heavy layout changes unless requested.
-- **Bio / “About” copy:** If you change the story on the home page, update **`README.md`** here in plain text and remind the user to sync **`shahzebqazi/shahzebqazi`** if their profile should match (`SYNC.md`).
-- **Projects list:** Edit **`content/projects.html`** (grouped sections, live URLs). Refresh periodically against GitHub (`has_pages` on repos) and spot-check URLs.
-- **Links:** Maintain the standalone **links** repository (not this repo); navigation here points to **`links.html`** (redirect). Mirror to profile **`README.md`** when you want parity.
+- **Prefer minimal HTML** unless the user asks for richer structure or styling.
+- **Bio / “About” copy:** If you change the story on the home page, update **`README.md`** and remind the user to sync **`shahzebqazi/shahzebqazi`** per `SYNC.md`.
+- **Projects list:** Edit **`content/projects.html`**; spot-check live URLs.
+- **Links:** Maintain the standalone **links** repository; **`links.html`** only holds the redirect.
 
 ## Git and deploy
 
-- Work on **feature branches**; merge to **`main`** to publish (workflow deploys on push to `main`).
+- Work on **feature branches**; merge to **`main`** to publish.
+- **Do not** re-add a root `CNAME` file (that was for GitHub Pages only).
+- Infra changes: in `~/Git/Machines/my-servers/moons/sol/terraform` — not this repo.
 - Commit messages should describe **what** changed and **why** when it is not obvious.
 
 ## Checklist before finishing a change
 
-- [ ] Any new copy that belongs in the profile README is noted or updated per `SYNC.md`.
-- [ ] `content/projects.html` and any `content/*.txt` used by navigation are up to date.
-- [ ] New tasks or discoveries are reflected on [Project #14](https://github.com/users/shahzebqazi/projects/14) when appropriate.
+- [ ] Profile README sync noted per `SYNC.md` when bio/links changed.
+- [ ] `content/projects.html` and relevant `content/*.txt` updated.
+- [ ] New tasks on [Project #14](https://github.com/users/shahzebqazi/projects/14) when appropriate.
+- [ ] No secrets in git (GitHub Actions secrets; `terraform.tfvars` in my-servers, gitignored there).

@@ -1,35 +1,52 @@
-name: Deploy to GitHub Pages
+name: Deploy to AWS (S3 + CloudFront)
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
   id-token: write
+  contents: read
 
 concurrency:
-  group: pages
+  group: aws-site-deploy
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      AWS_REGION: us-east-1
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          path: .
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Sync static files to S3
+        run: |
+          aws s3 sync . "s3://${{ secrets.AWS_S3_BUCKET }}" \
+            --delete \
+            --region "$AWS_REGION" \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "infra/*" \
+            --exclude "docs/*" \
+            --exclude "README.md" \
+            --exclude "AGENTS.md" \
+            --exclude "SYNC.md" \
+            --exclude "CNAME" \
+            --exclude "*.md" \
+            --cache-control "public,max-age=3600" \
+            --guess-mime-type
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"
