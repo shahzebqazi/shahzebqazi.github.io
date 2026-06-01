@@ -37,6 +37,7 @@ jobs:
             --exclude ".github/*" \
             --exclude "infra/*" \
             --exclude "docs/*" \
+            --exclude "tests/*" \
             --exclude "README.md" \
             --exclude "AGENTS.md" \
             --exclude "SYNC.md" \
