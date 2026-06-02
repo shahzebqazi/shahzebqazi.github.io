@@ -1,6 +1,6 @@
 # Handoff — link coverage (sqazi.sh portfolio)
 
-**Status:** Copy fixes applied 2026-06-02 · S3 demo prefixes still **403** (infra pending)  
+**Status:** Copy fixes on `main` (`fdae1c4`) · S3 demo prefixes still **403** — infra: [`my-servers` alert](https://github.com/shahzebqazi/my-servers/blob/main/docs/handoff/alerts/2026-06-02-sqazi-demo-prefixes-403.md) + `moons/sol/scripts/sync-project-prefixes.sh`  
 **Audit artifact:** [`link-audit-2026-06-02.md`](link-audit-2026-06-02.md)  
 **Related:** [`HANDOFF-CV-PROJECTS-EMPLOYABILITY.md`](HANDOFF-CV-PROJECTS-EMPLOYABILITY.md) Phase 4 · [`my-servers` lambda-terminal alert](https://github.com/shahzebqazi/my-servers/blob/main/docs/handoff/alerts/2026-06-01-lambda-terminal-down.md)
 
