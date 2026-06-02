@@ -17,14 +17,15 @@ def test_index_html_exists_and_has_markers():
 def test_content_shell_exists():
     assert (REPO_ROOT / "content.html").is_file()
     assert (REPO_ROOT / "content" / "projects.html").is_file()
-    assert (REPO_ROOT / "content" / "cv.html").is_file()
+    assert (REPO_ROOT / "content" / "cv.txt").is_file()
+    assert not (REPO_ROOT / "content" / "cv.html").exists()
 
 
-def test_cv_hero_assets_exist():
+def test_project_hero_assets_exist():
     heroes = REPO_ROOT / "assets" / "cv-heroes"
     for name in (
         "dotfiles-horde.jpg",
-        "mastodon-agent.webp",
+        "lambda-terminal.svg",
         "power-ampache2-android-auto.png",
         "mystic-ai.png",
     ):
@@ -38,7 +39,6 @@ DEPLOYED_COPY = (
     "content.html",
     "links.html",
     "content/projects.html",
-    "content/cv.html",
     "content/cv.txt",
 )
 
