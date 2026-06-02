@@ -17,15 +17,9 @@ DEPLOYED_GLOB = (
 
 URL_RE = re.compile(r"https?://[^\s\"'<>)\]]+")
 
-# sqazi.sh project demo prefixes — must not appear as href while S3 returns 403
+# sqazi.sh demo prefixes still blocked on S3 (no public artifact yet)
 FORBIDDEN_SQAZI_DEMO_PREFIXES = (
-    "https://sqazi.sh/lambda-terminal/",
-    "https://sqazi.sh/pa2-car-plugin/",
     "https://sqazi.sh/iconoclast-vst-ui/",
-    "https://sqazi.sh/neck-diagram-studio/",
-    "https://sqazi.sh/mhn-ai-agent-memory/",
-    "https://sqazi.sh/mystic-ai/",
-    "https://sqazi.sh/benchmark-euterpea/",
 )
 
 # Known-bad GitHub paths cited in past audits
