@@ -40,8 +40,9 @@ CV: https://sqazi.sh/content.html?page=cv
 | Display name | **Willy Worst** | Professional / portfolio / LinkedIn |
 | Legal / forms | Willy S. Qazi | Government, payroll, contracts only |
 | Email | **code@sqazi.sh** | Not gmail for professional applies |
-| Portfolio | **https://sqazi.sh** | Never `shahzebqazi.github.io` in outward copy |
-| Legacy host | **https://shahzebqazi.github.io** | Redirects to sqazi.sh (same path/query); not a second site |
+| Portfolio | **https://sqazi.sh** | Never `shahzebqazi.github.io` in deployed site copy (`index.html`, `content/*`) |
+| Project demos | **https://sqazi.sh/&lt;repo-slug&gt;/** | When S3 prefix synced (200); else GitHub repo / docs paths — see [`docs/handoffs/HANDOFF-LINK-COVERAGE.md`](handoffs/HANDOFF-LINK-COVERAGE.md) |
+| Legacy host | **https://shahzebqazi.github.io** | Apex redirects to sqazi.sh; per-repo `github.io/&lt;project&gt;/` may host demos until mirrored |
 | GitHub | **https://github.com/shahzebqazi** | |
 | CV (share link) | **https://sqazi.sh/content.html?page=cv** | Primary CTA for recruiters |
 | CV (fetch) | **https://sqazi.sh/content/cv.txt** | For agents and scripts |
@@ -101,4 +102,4 @@ Do not maintain two competing master CV files.
 
 ---
 
-*Last updated: 2026-05-28*
+*Last updated: 2026-06-02*

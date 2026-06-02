@@ -1,6 +1,6 @@
 # Handoff — CV, projects page, employability & SEO
 
-**Status:** In progress (2026-06-02) — Phases 1–3 implemented locally; deploy + Phase 4 infra pending  
+**Status:** In progress (2026-06-02) — Phases 1–3 locally; **deploy trio link coverage done** (GitHub fallbacks); Phase 4 S3 sync pending in `my-servers`  
 **Repo:** `shahzebqazi.github.io` (site source; deploys to **sqazi.sh** via AWS)  
 **Canon:** [`docs/BRANDING.md`](../BRANDING.md) · [`AGENTS.md`](../../AGENTS.md) · [`SYNC.md`](../../SYNC.md)  
 **Task board:** [GitHub Project #14](https://github.com/users/shahzebqazi/projects/14)
@@ -26,8 +26,8 @@ Improve the **human CV** and **projects** pages so they read clearly to recruite
 
 ### CV (recent)
 
-- **Human:** `content/cv.html` — HTML with links, dates on roles, **Highlighted work** cards.
-- **Machine:** `content/cv.txt` — ATS/agent source; must stay in sync with facts in `cv.html`.
+- **Live:** `content.html?page=cv` renders **`content/cv.txt`** (plain text via `plain-content.js`; linkified in browser).
+- **Machine:** `content/cv.txt` — ATS/agent source; facts from `~/Git/private/my-linkedin` (do not edit private repo from here).
 - **Hero art (vendored):** `assets/cv-heroes/` — canonical art copied from source repos (not `assets/projects/*` placeholders).
 
 | File | Source repo / path |
@@ -42,13 +42,14 @@ Improve the **human CV** and **projects** pages so they read clearly to recruite
 - `content/projects.html` still uses **`assets/projects/*-hero.svg`** — Catppuccin template banners added 2026-05-28 (`52f78a2`, Cursor). **Not** the same as repo demo art or `assets/cv-heroes/`.
 - **Featured pins on page ≠ canon:** Page lists mystic-ai + zinwa in featured; canon (home, `BRANDING_AUDIT_TASKS.md`) is: **lambda-terminal · benchmark-euterpea · cursor-agents · mhn-ai-agent-memory · dotfiles · Power Ampache 2**.
 - **uxui card** reuses `mystic-ai-hero.svg`; copy is weak; `uxui.sqazi.sh` may not resolve.
-- Many `https://sqazi.sh/<project>/` demo paths return **403** (S3 prefix never synced) — see [`my-servers` handoff](https://github.com/shahzebqazi/my-servers/blob/main/docs/handoff/alerts/2026-06-01-lambda-terminal-down.md).
+- Deployed copy no longer hrefs **403** `sqazi.sh/<project>/` prefixes (2026-06-02); prefixes still 403 if probed directly — S3 sync in [`HANDOFF-LINK-COVERAGE.md`](HANDOFF-LINK-COVERAGE.md) Phase 4 / [`my-servers` alert](https://github.com/shahzebqazi/my-servers/blob/main/docs/handoff/alerts/2026-06-01-lambda-terminal-down.md).
 
 ### Tests
 
 - `tests/test_unit.py` — layout, no `shahzebqazi.github.io` in deployed copy, cv-heroes exist.
+- `tests/test_links.py` — no forbidden 403 demo hrefs or known-bad GitHub paths in deploy set.
 - `tests/test_acceptance.py` — live sqazi.sh homepage + CV markers (post-deploy).
-- Run: `python3 -m pytest tests/ -q -m "not github_io"`
+- Run: `python3 -m pytest tests/test_unit.py tests/test_links.py -q -m "not github_io and not live"`
 
 ---
 
@@ -79,7 +80,7 @@ Use this rubric when editing. Score each area **Pass / Weak / Fail** in PR descr
 | Signal | Current | Target |
 |--------|---------|--------|
 | GitHub pins alignment | Fail | Match six pins exactly in featured section |
-| Demo links | Fail | Fix 403s or link to working URLs (github.io demos, raw Pages) until S3 synced |
+| Demo links | Pass (href) | Deploy trio uses GitHub repo/docs paths; restore `sqazi.sh/<prefix>/` after S3 sync |
 | Visual proof | Partial | CV has real heroes; projects page does not |
 | mastodon-agent | Pass on CV | Not a GitHub pin — OK in highlights; don’t imply pin unless pinned |
 
@@ -88,7 +89,7 @@ Use this rubric when editing. Score each area **Pass / Weak / Fail** in PR descr
 | Signal | Current | Target |
 |--------|---------|--------|
 | Broken encoding | Fail | `assets/projects/lambda-terminal-hero.svg` has U+FFFD mojibake — fix or replace with repo `lambda-terminal/docs/assets/hero.svg` |
-| Consistency | Weak | `cv.html` vs `cv.txt` vs `index.html` vs `projects.html` — single fact source (`cv.txt` first, then propagate) |
+| Consistency | Weak | `cv.txt` vs `index.html` vs `projects.html` — single fact source (`cv.txt` first, then propagate) |
 | Private lineage | Pass | dotfiles ↔ horde called out honestly (public layer vs private bootstrap) |
 
 ---
@@ -191,11 +192,11 @@ Use this rubric when editing. Score each area **Pass / Weak / Fail** in PR descr
 
 ### Phase 4 — Infra follow-up (P2, separate repo)
 
-**Repo:** `my-servers` moon Sol — not blocking copy edits.
+**Repo:** `my-servers` moon Sol — copy no longer hrefs 403 demos (see [`HANDOFF-LINK-COVERAGE.md`](HANDOFF-LINK-COVERAGE.md)).
 
-- [ ] S3 sync missing prefixes: `mystic-ai/`, `mhn-ai-agent-memory/`, `neck-diagram-studio/`, `pa2-car-plugin/`, etc.
-- [ ] CloudFront subpath rewrite already exists for directory indexes.
-- [ ] After sync, re-test all `sqazi.sh/<project>/` links from projects/CV.
+- [ ] S3 sync missing prefixes: `lambda-terminal/` (regressed 403 on 2026-06-02), `benchmark-euterpea/`, `mystic-ai/`, `mhn-ai-agent-memory/`, `neck-diagram-studio/`, `pa2-car-plugin/`, `iconoclast-vst-ui/` (source TBD).
+- [x] CloudFront subpath rewrite already exists for directory indexes.
+- [ ] After sync, re-test prefixes; optionally restore `sqazi.sh/<project>/` hrefs on projects + home.
 
 ### Phase 5 — Cross-surface sync (P1)
 
@@ -272,7 +273,7 @@ curl -sL https://shahzebqazi.github.io/ | head -5
 3. **Single deploy path** — Content changes here; infra in `my-servers/moons/sol/`.
 4. **No new AI slop art** — Reuse vendored/repo art only.
 5. **Minimal diff** — No unrelated refactors; no new markdown files unless this handoff is updated.
-6. **Commits** — Only when operator asks; otherwise branch + summary ready to commit.
+6. **Commits** — Only when operator asks (link coverage committed 2026-06-02).
 7. **Project board** — Log tasks on [Project #14](https://github.com/users/shahzebqazi/projects/14).
 
 ---
@@ -296,6 +297,7 @@ Resolved 2026-06-02: (1) TMU **2022**; (2) work auth line **yes** — “Authori
 
 ## References
 
+- Link coverage (deploy trio, probes): [`HANDOFF-LINK-COVERAGE.md`](HANDOFF-LINK-COVERAGE.md) · [`link-audit-2026-06-02.md`](link-audit-2026-06-02.md)
 - AWS cutover / 403 incident: `my-servers/docs/handoff/alerts/2026-06-01-lambda-terminal-down.md`
 - DNS: `my-servers/docs/DNS.md`
 - Prior audit: `docs/BRANDING_AUDIT_TASKS.md`

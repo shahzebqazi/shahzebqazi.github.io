@@ -41,6 +41,9 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 | `infra/README.md` | Pointer to `my-servers/moons/sol/` |
 | `docs/AWS_MIGRATION.md` | Short pointer to moon Sol setup |
 | `docs/handoffs/HANDOFF-CV-PROJECTS-EMPLOYABILITY.md` | Planned work: CV/projects, employability, SEO |
+| `docs/handoffs/HANDOFF-CV-REVIEW-HIRING-AGENT.md` | Review-only: hiring engineer + ATS/agent feedback on live CV |
+| `docs/handoffs/HANDOFF-LINK-COVERAGE.md` | Link inventory, probe results, S3 vs copy fix policy |
+| `docs/handoffs/link-audit-2026-06-02.md` | URL table + curl probe log (refresh when copy/infra changes) |
 | `pages/` | GitHub Pages redirect stubs (not deployed to S3) |
 | `.github/workflows/deploy.yml` | Deploy site to S3 + invalidate CloudFront |
 | `.github/workflows/pages-redirect.yml` | Deploy `pages/` to GitHub Pages |

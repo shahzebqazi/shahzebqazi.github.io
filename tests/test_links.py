@@ -1,0 +1,79 @@
+"""Link hygiene for deployed copy (static parse; optional live probe)."""
+import re
+from pathlib import Path
+
+import pytest
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+DEPLOYED_GLOB = (
+    "index.html",
+    "content.html",
+    "links.html",
+    "content/projects.html",
+    "content/cv.txt",
+    "assets/js/plain-content.js",
+)
+
+URL_RE = re.compile(r"https?://[^\s\"'<>)\]]+")
+
+# sqazi.sh project demo prefixes — must not appear as href while S3 returns 403
+FORBIDDEN_SQAZI_DEMO_PREFIXES = (
+    "https://sqazi.sh/lambda-terminal/",
+    "https://sqazi.sh/pa2-car-plugin/",
+    "https://sqazi.sh/iconoclast-vst-ui/",
+    "https://sqazi.sh/neck-diagram-studio/",
+    "https://sqazi.sh/mhn-ai-agent-memory/",
+    "https://sqazi.sh/mystic-ai/",
+    "https://sqazi.sh/benchmark-euterpea/",
+)
+
+# Known-bad GitHub paths cited in past audits
+FORBIDDEN_GITHUB_PATHS = (
+    "https://github.com/shahzebqazi/benchmark-euterpea/tree/main/report",
+)
+
+
+def _deployed_texts():
+    for rel in DEPLOYED_GLOB:
+        yield rel, (REPO_ROOT / rel).read_text(encoding="utf-8")
+
+
+def test_deployed_copy_has_no_forbidden_sqazi_demo_hrefs():
+    for rel, text in _deployed_texts():
+        for bad in FORBIDDEN_SQAZI_DEMO_PREFIXES:
+            assert bad not in text, f"{rel} still links {bad}"
+
+
+def test_deployed_copy_has_no_known_bad_github_paths():
+    for rel, text in _deployed_texts():
+        for bad in FORBIDDEN_GITHUB_PATHS:
+            assert bad not in text, f"{rel} still links {bad}"
+
+
+def test_projects_html_urls_are_https_or_internal():
+    projects = (REPO_ROOT / "content" / "projects.html").read_text(encoding="utf-8")
+    for url in URL_RE.findall(projects):
+        url = url.rstrip(".,;)")
+        assert url.startswith("https://") or url.startswith("content.html"), url
+
+
+@pytest.mark.live
+def test_sqazi_demo_prefixes_return_200():
+    """Run with: pytest tests/test_links.py -m live (needs network + infra)."""
+    import subprocess
+
+    for prefix in (
+        "lambda-terminal",
+        "pa2-car-plugin",
+        "neck-diagram-studio",
+        "mhn-ai-agent-memory",
+        "mystic-ai",
+        "benchmark-euterpea",
+    ):
+        url = f"https://sqazi.sh/{prefix}/"
+        code = subprocess.check_output(
+            ["curl", "-sI", "-L", "-o", "/dev/null", "-w", "%{http_code}", url],
+            text=True,
+        ).strip()
+        assert code == "200", f"{url} -> {code}"
