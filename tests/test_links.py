@@ -20,7 +20,6 @@ URL_RE = re.compile(r"https?://[^\s\"'<>)\]]+")
 # sqazi.sh demo prefixes still blocked on S3 (no public artifact yet)
 FORBIDDEN_SQAZI_DEMO_PREFIXES = (
     "https://sqazi.sh/iconoclast-vst-ui/",
-    "https://sqazi.sh/vst-ui/",
 )
 
 # Known-bad GitHub paths cited in past audits
