@@ -4,7 +4,7 @@ Short notes and build logs. Long-form posts will land here when mirrored; for no
 
 2026-06-02 — Git hygiene after agent-assisted commits
 
-Spent part of the day cleaning up shahzebqazi.github.io history after a burst of Cursor-assisted commits. Notes for future me (and any agent with shell access).
+Spent part of the day cleaning up sqazi.sh portfolio repo history after a burst of Cursor-assisted commits. Notes for future me (and any agent with shell access).
 
 Interactive rebase — `git rebase -i <base>` replays commits from `<base>` exclusive. Use `pick` to keep, `squash` / `fixup` to fold messages into the commit above (`fixup` drops the extra message). Fifteen “align featured pins” commits can become three with honest titles. Automate the todo list with `GIT_SEQUENCE_EDITOR` when you are not in a real terminal UI.
 
