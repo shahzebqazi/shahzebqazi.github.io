@@ -2,6 +2,26 @@ Short notes and build logs. Long-form posts will land here when mirrored; for no
 
 ────────────────────────────────────────────────────────────────
 
+2026-06-02 — Git hygiene after agent-assisted commits
+
+Spent part of the day cleaning up shahzebqazi.github.io history after a burst of Cursor-assisted commits. Notes for future me (and any agent with shell access).
+
+Interactive rebase — `git rebase -i <base>` replays commits from `<base>` exclusive. Use `pick` to keep, `squash` / `fixup` to fold messages into the commit above (`fixup` drops the extra message). Fifteen “align featured pins” commits can become three with honest titles. Automate the todo list with `GIT_SEQUENCE_EDITOR` when you are not in a real terminal UI.
+
+Stash before you rewrite history — `git stash push -u` so uncommitted CV/projects work survives the rebase. Pop after: `git stash pop`.
+
+When to force-push — Rewriting `main` that already shipped needs `git push --force-with-lease`. Fine on a solo portfolio repo if you accept the risk; not worth it for cosmetic squash if nobody else cares. We kept the messy remote history and landed fixes on a branch instead.
+
+Cherry-pick without rebasing main — `git checkout -b fix/foo origin/main` then `git cherry-pick <sha>` applies one commit’s patch on top of production. Good when local `main` diverged after an experimental rebase but you only want the employability diff on GitHub.
+
+Deploy when OAuth blocks workflow files — HTTPS push rejected updating `.github/workflows/*` without the `workflow` scope. SSH remote (`git@github.com:…`) plus a PR merge still triggered Actions.
+
+What “AI slop” looks like in `git log` — not just bad merges: oscillation (same file fixed four times), commit messages that say “canonical” then “fix alignment”, tests added after deploy, and `Co-authored-by: Cursor` on every other SHA. The tree works; archaeology does not.
+
+Practical rule — clean before push on a feature branch; squash-merge the PR; revert or forward-fix on shared `main`. Use rebase -i to repair local tails, not as performance art.
+
+────────────────────────────────────────────────────────────────
+
 2026-05-22 — Repo consolidation (sqazi.sh + GitHub)
 What changed: sqazi.sh now separates six featured GitHub pins from broader portfolio work. Current featured set: lambda-terminal, benchmark-euterpea, cursor-agents, mhn-ai-agent-memory, dotfiles, Power Ampache 2. Additional portfolio context stays public for Iconoclast Audio, Neck Diagram Studio, mystic-ai, and zinwa-q25-keyboard.
 
