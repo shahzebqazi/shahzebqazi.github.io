@@ -19,7 +19,7 @@ MARKERS = (
 CV_MARKERS = (
     "Willy Worst",
     "FEATURED GITHUB PINS",
-    "VENTURES",
+    "https://github.com/shahzebqazi",
     "Authorized to work in Canada",
     "mailto:code@sqazi.sh",
 )
