@@ -22,9 +22,9 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 - **Custom domain:** `sqazi.sh` (DNS via DigitalOcean by default; see [`docs/AWS_MIGRATION.md`](docs/AWS_MIGRATION.md)).
 - **Deploy (sqazi.sh):** push to **`main`** → `deploy.yml` → S3 sync + CloudFront invalidation.
 - **Deploy (github.io):** same push → `pages-redirect.yml` → `pages/` only (redirect stubs to sqazi.sh). Repo **Settings → Pages → Source: GitHub Actions** must be enabled once.
-- **CV:** [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) — edit `content/cv.html` (human, with hero art) and `content/cv.txt` (machine); see [`docs/BRANDING.md`](docs/BRANDING.md).
-- **CV hero art:** vendored under `assets/cv-heroes/` from source repos (do not replace with `assets/projects/*` placeholders).
-- **“Dynamic” pages:** `content.html?page=…` loads HTML fragments or plain text. **Projects** → `content/projects.html`; **CV** → `content/cv.html`; **Papers, Blog** → `content/*.txt`.
+- **CV (live):** [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) renders **`content/cv.txt`** (plain text). **Facts source of truth:** `~/Git/private/my-linkedin` (`applications/CANDIDATE.md`, `profile/*.md`) — sync into `content/cv.txt` before deploy; do not edit `my-linkedin` from this repo without operator approval.
+- **CV / LinkedIn assets:** post and company art live under `my-linkedin/assets/`; **project hero art** for the projects page only → `assets/cv-heroes/` (vendored from project repos).
+- **“Dynamic” pages:** `content.html?page=…` loads HTML fragments or plain text. **Projects** → `content/projects.html`; **CV, Papers, Blog** → `content/<name>.txt`.
 
 ## Repo map
 
@@ -32,9 +32,9 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 |------|------|
 | `index.html` | Home / About |
 | `links.html` | Redirect to the **links** site (separate repo; see `SYNC.md`) |
-| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html`, `content/cv.html`, or `content/<name>.txt`) |
-| `content/cv.html` | Human CV with linked copy and `assets/cv-heroes/` art |
-| `content/projects.html` | Projects portfolio (HTML cards) |
+| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
+| `content/cv.txt` | Live CV (plain text); sync facts from `~/Git/private/my-linkedin` |
+| `content/projects.html` | Projects portfolio (HTML cards; uses `assets/cv-heroes/`) |
 | `content/*.txt` | Papers, CV, Blog bodies |
 | `README.md` | Plain-text mirror for **GitHub profile** sync (`SYNC.md`) — not deployed to S3 |
 | `SYNC.md` | Profile README, home page, and links alignment |

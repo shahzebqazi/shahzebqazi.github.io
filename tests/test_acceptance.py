@@ -18,8 +18,9 @@ MARKERS = (
 
 CV_MARKERS = (
     "Willy Worst",
-    "assets/cv-heroes/mystic-ai.png",
-    "assets/cv-heroes/dotfiles-horde.jpg",
+    "FEATURED GITHUB PINS",
+    "VENTURES",
+    "Authorized to work in Canada",
     "mailto:code@sqazi.sh",
 )
 

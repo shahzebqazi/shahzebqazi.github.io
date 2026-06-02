@@ -11,7 +11,7 @@ This document is the **source of truth** for how personal surfaces relate. When 
 | Priority | Surface | Repo | URL | Role |
 |----------|---------|------|-----|------|
 | 1 | **CV (human)** | `shahzebqazi.github.io` | [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) | **Main résumé page** — share in applications, email sig, Featured |
-| 1 | **CV (machine)** | same | [sqazi.sh/content/cv.txt](https://sqazi.sh/content/cv.txt) | Agents, tailoring, ATS paste source — keep in sync with `content/cv.html` |
+| 1 | **CV (machine)** | same | [sqazi.sh/content/cv.txt](https://sqazi.sh/content/cv.txt) | Live CV (plain text at `?page=cv`); facts from `~/Git/private/my-linkedin` |
 | 2 | **Portfolio home** | same | [sqazi.sh](https://sqazi.sh/) | About, narrative, nav to Projects / CV / Blog |
 | 2 | **Projects** | same | [sqazi.sh/content.html?page=projects](https://sqazi.sh/content.html?page=projects) | Curated shipped work |
 | 3 | **GitHub profile** | `shahzebqazi` | [github.com/shahzebqazi](https://github.com/shahzebqazi) | Code identity; README mirrors **home** story, links to CV |
@@ -79,9 +79,9 @@ Do not maintain two competing master CV files.
 
 | Path | Edit when |
 |------|-----------|
-| `shahzebqazi.github.io/content/cv.html` | Human CV layout, highlights, hero art |
-| `shahzebqazi.github.io/content/cv.txt` | Any CV fact or reference summary (machine) |
-| `shahzebqazi.github.io/assets/cv-heroes/` | Vendored canonical project art for CV |
+| `shahzebqazi.github.io/content/cv.txt` | Live CV facts — sync from `my-linkedin` (`CANDIDATE.md`, `profile/*.md`) |
+| `my-linkedin/assets/` | LinkedIn post / company art (private; not deployed to sqazi.sh) |
+| `shahzebqazi.github.io/assets/cv-heroes/` | Project hero art for **projects page** only |
 | `shahzebqazi.github.io/index.html` | Home / About narrative |
 | `shahzebqazi.github.io/content/projects.html` | Project cards |
 | `shahzebqazi.github.io/links.html` | Redirect target for link hub only |
