@@ -71,6 +71,8 @@ def test_deploy_workflow_yaml_valid():
     run = sync_step["run"]
     assert "--guess-mime-type" not in run
     assert "--exclude \"pages/*\"" in run
+    assert '--exclude "lambda-terminal/*"' in run
+    assert '--exclude "neck-diagram-studio/*"' in run
 
 
 def test_pages_redirect_workflow_yaml_valid():

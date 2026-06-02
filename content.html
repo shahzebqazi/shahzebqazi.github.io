@@ -171,7 +171,8 @@
       return res.text();
     })
     .then(function (text) {
-      var opts = { linkGithubReposToProjects: page === "cv" };
+      /* CV: keep github.com hrefs (recruiters expect repo URLs; cv.txt is plain for ATS). */
+      var opts = { linkGithubReposToProjects: false };
       if (globalThis.PlainContent) {
         PlainContent.renderInto(contentEl, text, opts);
       } else {

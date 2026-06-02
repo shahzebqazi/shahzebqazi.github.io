@@ -51,6 +51,22 @@ def test_deployed_copy_has_no_known_bad_github_paths():
             assert bad not in text, f"{rel} still links {bad}"
 
 
+def test_cv_txt_github_repos_have_plain_content_anchor():
+    """Every shahzebqazi repo URL in cv.txt must be in GITHUB_REPO_ANCHOR (if rewrite re-enabled)."""
+    import re
+
+    cv = (REPO_ROOT / "content" / "cv.txt").read_text(encoding="utf-8")
+    js = (REPO_ROOT / "assets/js/plain-content.js").read_text(encoding="utf-8")
+    anchors = set(re.findall(r'"([^"]+)":\s*"project-', js)) | set(
+        re.findall(r"(\w+):\s*\"project-", js)
+    )
+    repos = re.findall(
+        r"https://github\.com/shahzebqazi/([^/#?\s]+)", cv, flags=re.IGNORECASE
+    )
+    missing = sorted({r for r in repos if r not in anchors})
+    assert not missing, f"cv.txt repos missing from GITHUB_REPO_ANCHOR: {missing}"
+
+
 def test_projects_html_urls_are_https_or_internal():
     projects = (REPO_ROOT / "content" / "projects.html").read_text(encoding="utf-8")
     for url in URL_RE.findall(projects):

@@ -44,6 +44,13 @@ jobs:
             --exclude "SYNC.md" \
             --exclude "CNAME" \
             --exclude "*.md" \
+            --exclude "lambda-terminal/*" \
+            --exclude "benchmark-euterpea/*" \
+            --exclude "neck-diagram-studio/*" \
+            --exclude "mhn-ai-agent-memory/*" \
+            --exclude "pa2-car-plugin/*" \
+            --exclude "mystic-ai/*" \
+            --exclude "iconoclast-vst-ui/*" \
             --cache-control "public,max-age=3600"
 
       - name: Invalidate CloudFront cache
