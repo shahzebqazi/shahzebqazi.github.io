@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="zinwa-q25-keyboard">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e1e2e"/><stop offset="55%" stop-color="#313244"/><stop offset="100%" stop-color="#45475a"/></linearGradient></defs>
+  <rect width="1200" height="320" fill="url(#g)"/>
+  <svg x="480" y="40" width="240" height="240" viewBox="0 0 128 128" aria-hidden="true">
+<rect width="128" height="128" rx="20" fill="#27272a"/>
+  <rect x="24" y="44" width="80" height="40" rx="6" fill="#3f3f46" stroke="#71717a" stroke-width="2"/>
+  <rect x="32" y="52" width="10" height="10" rx="2" fill="#a1a1aa"/>
+  <rect x="46" y="52" width="10" height="10" rx="2" fill="#a1a1aa"/>
+  <rect x="60" y="52" width="10" height="10" rx="2" fill="#a1a1aa"/>
+  <rect x="74" y="52" width="10" height="10" rx="2" fill="#a1a1aa"/>
+  <rect x="88" y="52" width="10" height="10" rx="2" fill="#a1a1aa"/>
+  <text x="64" y="108" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="#d4d4d8">Q25</text>
+</svg>
+  <text x="600" y="300" text-anchor="middle" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="22" fill="#cdd6f4" font-weight="600">zinwa-q25-keyboard</text>
+</svg>

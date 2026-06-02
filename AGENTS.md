@@ -20,9 +20,11 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 
 - **Static site** on **AWS**: S3 + CloudFront — infra in **`my-servers`** moon Sol ([`infra/README.md`](infra/README.md)).
 - **Custom domain:** `sqazi.sh` (DNS via DigitalOcean by default; see [`docs/AWS_MIGRATION.md`](docs/AWS_MIGRATION.md)).
-- **Deploy:** push to **`main`** → GitHub Actions (OIDC) → S3 sync + CloudFront invalidation.
-- **CV:** [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) — edit `content/cv.txt`; see [`docs/BRANDING.md`](docs/BRANDING.md).
-- **“Dynamic” pages:** `content.html?page=…` loads content via `fetch`. **Projects** uses `content/projects.html`; **Papers, CV, Blog** use `content/*.txt`. No server-side rendering.
+- **Deploy (sqazi.sh):** push to **`main`** → `deploy.yml` → S3 sync + CloudFront invalidation.
+- **Deploy (github.io):** same push → `pages-redirect.yml` → `pages/` only (redirect stubs to sqazi.sh). Repo **Settings → Pages → Source: GitHub Actions** must be enabled once.
+- **CV:** [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) — edit `content/cv.html` (human, with hero art) and `content/cv.txt` (machine); see [`docs/BRANDING.md`](docs/BRANDING.md).
+- **CV hero art:** vendored under `assets/cv-heroes/` from source repos (do not replace with `assets/projects/*` placeholders).
+- **“Dynamic” pages:** `content.html?page=…` loads HTML fragments or plain text. **Projects** → `content/projects.html`; **CV** → `content/cv.html`; **Papers, Blog** → `content/*.txt`.
 
 ## Repo map
 
@@ -30,14 +32,18 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 |------|------|
 | `index.html` | Home / About |
 | `links.html` | Redirect to the **links** site (separate repo; see `SYNC.md`) |
-| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html` or `content/<name>.txt`) |
+| `content.html` | Shell for Projects, Papers, CV, Blog (`?page=` → `content/projects.html`, `content/cv.html`, or `content/<name>.txt`) |
+| `content/cv.html` | Human CV with linked copy and `assets/cv-heroes/` art |
 | `content/projects.html` | Projects portfolio (HTML cards) |
 | `content/*.txt` | Papers, CV, Blog bodies |
 | `README.md` | Plain-text mirror for **GitHub profile** sync (`SYNC.md`) — not deployed to S3 |
 | `SYNC.md` | Profile README, home page, and links alignment |
 | `infra/README.md` | Pointer to `my-servers/moons/sol/` |
 | `docs/AWS_MIGRATION.md` | Short pointer to moon Sol setup |
-| `.github/workflows/deploy.yml` | Deploy to S3 + invalidate CloudFront |
+| `docs/handoffs/HANDOFF-CV-PROJECTS-EMPLOYABILITY.md` | Planned work: CV/projects, employability, SEO |
+| `pages/` | GitHub Pages redirect stubs (not deployed to S3) |
+| `.github/workflows/deploy.yml` | Deploy site to S3 + invalidate CloudFront |
+| `.github/workflows/pages-redirect.yml` | Deploy `pages/` to GitHub Pages |
 
 ## Editing rules
 
@@ -49,7 +55,9 @@ Treat the project board as the **canonical task list**; this repo’s issues and
 ## Git and deploy
 
 - Work on **feature branches**; merge to **`main`** to publish.
-- **Do not** re-add a root `CNAME` file (GitHub Pages custom domain removed 2026-06-01; production is CloudFront only).
+- **Do not** re-add a root `CNAME` file (custom domain on Pages removed 2026-06-01).
+- **Do not** put `shahzebqazi.github.io` in deployed HTML or `content/*` — use `https://sqazi.sh/…` paths.
+- Per-repo project sites under `github.io/<project>/` are separate repos; migrate or redirect those individually if needed.
 - Infra changes: in `~/Git/Machines/my-servers/moons/sol/terraform` — not this repo.
 - Commit messages should describe **what** changed and **why** when it is not obvious.
 

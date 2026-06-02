@@ -1,12 +1,14 @@
 Willy Worst
-Toronto, Ontario, Canada
+Toronto, Ontario, Canada · Authorized to work in Canada
 code@sqazi.sh · https://sqazi.sh · https://www.linkedin.com/in/lambdaqazi
+
+Human CV (with project hero art): https://sqazi.sh/content.html?page=cv
 
 ────────────────────────────────────────────────────────────────
 
 PROFESSIONAL SUMMARY
 
-Software engineer and AI agent builder (Honours B.Sc. CS, TMU). Python, TypeScript, Kotlin, Swift; React/Next.js. Open to Software Engineer, AI Engineer, platform/backend — Toronto hybrid or remote.
+Software engineer building AI agents, backends, and developer tooling (Honours B.Sc. CS, TMU). Open to Software Engineer and AI Engineer roles — Toronto hybrid or remote.
 
 One-line audio: mastering studio at iconoclastaud.io (full CV there, not here).
 
@@ -14,13 +16,10 @@ One-line audio: mastering studio at iconoclastaud.io (full CV there, not here).
 
 CORE STRENGTHS
 
-SWE — backends, APIs, Next.js, Kotlin/Android, Swift/macOS, open source
+SWE — backends, APIs, Next.js, Kotlin/Android, Swift/macOS
 AI — agents, MCP, Hopfield memory research, benchmark/evaluation pipelines
 Systems — Linux/macOS, homelab, xonsh profiles & declarative config (dotfiles)
 Infra — DigitalOcean, Docker/Caddy stacks, client delivery pipelines
-Hardware — Q25 keyboard firmware, mobile device UX
-Artist / Creative — audio production workflow; bands on iconoclastaud.io
-Agile / XP — iterative delivery, small batches, client revision cycles
 
 ────────────────────────────────────────────────────────────────
 
@@ -29,15 +28,20 @@ EXPERIENCE
 Power Ampache 2 — Open-source Contributor — Android Auto Plugin
 March 2026 – Present
 https://github.com/shahzebqazi/PowerAmpache2PluginTemplate
-• Kotlin Android Auto plugin template; MediaLibraryService, IPC with host app.
-• UX sandbox: https://shahzebqazi.github.io/pa2-car-plugin/
+• Shipped Kotlin Android Auto plugin template: MediaLibraryService, host IPC, car UX sandbox in repo README.
 
 Iconoclast Audio — Founder — Platform & Studio Engineering
 January 2024 – Present · Toronto, ON
 https://www.iconoclastaud.io/
-• Mixing, mastering, stem mastering, restoration, studio consulting (solo + contractors).
-• Client platform: Mac + DO + homelab — Nextcloud, Ampache, MusicBrainz/Picard; 2 revisions, ~3–5 day turnaround.
-• Engineering hub: https://shahzebqazi.github.io/iconoclast-vst-ui/
+• Client delivery platform on Mac + DigitalOcean + homelab (Nextcloud, Ampache, MusicBrainz/Picard); typical revision cycle ~3–5 days.
+• Engineering hub: https://sqazi.sh/iconoclast-vst-ui/
+
+────────────────────────────────────────────────────────────────
+
+HIGHLIGHTED WORK (hero art on HTML CV)
+
+mastodon-agent — Fediverse posting agent
+https://github.com/shahzebqazi/mastodon-agent
 
 ────────────────────────────────────────────────────────────────
 
@@ -47,7 +51,7 @@ FEATURED GITHUB PINS
 https://github.com/shahzebqazi/lambda-terminal · https://sqazi.sh/lambda-terminal/
 
 benchmark-euterpea — Deterministic Agent Evaluation Pipeline
-https://github.com/shahzebqazi/benchmark-euterpea · https://shahzebqazi.github.io/benchmark-euterpea/
+https://github.com/shahzebqazi/benchmark-euterpea · report in repo (tree/main/report)
 
 cursor-agents — AI Agent Toolkit
 https://github.com/shahzebqazi/cursor-agents
@@ -68,28 +72,20 @@ ADDITIONAL PORTFOLIO
 Iconoclast Audio — Studio, Platform & Commerce
 https://www.iconoclastaud.io/
 
+mystic-ai — Brand pipeline & desktop UX
+https://github.com/shahzebqazi/mystic-ai
+
 Neck Diagram Studio — Fretboard Web App
 https://sqazi.sh/neck-diagram-studio/
-
-Mystic — Brand System & Desktop UX Showcase
-https://github.com/shahzebqazi/mystic-ai · https://shahzebqazi.github.io/mystic-ai/
 
 zinwa-q25-keyboard — Firmware & Mobile UX
 https://github.com/shahzebqazi/zinwa-q25-keyboard
 
 ────────────────────────────────────────────────────────────────
 
-VENTURES
-
-Iconoclast Audio — https://www.iconoclastaud.io/
-Gankmid Co. — https://www.gankmid.co/
-Gear Acquisition Syndrome (Reverb) — https://reverb.com/shop/gearacquisitionsyndrome/
-
-────────────────────────────────────────────────────────────────
-
 EDUCATION
 
-Toronto Metropolitan University — Honours B.Sc., Computer Science
+Toronto Metropolitan University — Honours B.Sc., Computer Science (2022)
 
 ────────────────────────────────────────────────────────────────
 

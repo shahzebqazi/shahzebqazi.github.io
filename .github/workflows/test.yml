@@ -25,4 +25,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r tests/requirements.txt
-      - run: pytest tests/test_acceptance.py -q
+      - run: pytest tests/test_acceptance.py -q -m "not github_io"
