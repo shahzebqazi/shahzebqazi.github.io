@@ -30,7 +30,7 @@
 |--------------|----------------|----------|-------|
 | `sqazi.sh/lambda-terminal/` (403) | `github.com/.../lambda-terminal/tree/main/docs/review` | **B** copy | site ✓ |
 | `github.com/.../benchmark-euterpea/tree/main/report` (404) | `.../benchmark-euterpea/blob/main/README.md#public-report` | **B** copy | site ✓ |
-| `sqazi.sh/iconoclast-vst-ui/` (403) | Plain text (no href); studio at iconoclastaud.io | **C** remove | site ✓ |
+| `sqazi.sh/iconoclast-vst-ui/` (403) | `iconoclastaud.io` studio hub + VST mockups link; demo prefix renamed **`vst-ui/`** | **C** remove old prefix | site ✓ |
 | `sqazi.sh/neck-diagram-studio/`, `pa2-car-plugin/` on home (403) | GitHub repo links only | **B** copy | site ✓ |
 | `sqazi.sh/mhn-ai-agent-memory/` in README | `github.com/.../mhn-ai-agent-memory` | **B** copy | site ✓ |
 | All `sqazi.sh/<demo>/` prefixes | Still **403** | **A** infra | **my-servers** |
@@ -51,7 +51,8 @@ Sync source → S3 prefix (re-probe until 200):
 | `neck-diagram-studio/` | `~/Git/public/neck-diagram-studio/frontend/out` | `shahzebqazi.github.io/neck-diagram-studio/` |
 | `mhn-ai-agent-memory/` | repo `docs/` or Pages path | `shahzebqazi.github.io/mhn-ai-agent-memory/` |
 | `mystic-ai/` | mystic-ai Pages path | `shahzebqazi.github.io/mystic-ai/` |
-| `iconoclast-vst-ui/` | **Blocked** — no public repo; gh.io **404** | — |
+| `vst-ui/` | `~/Git/private/Iconoclast/iconoclast` @ branch **`iconoclast-vst-ui`** (static `index.html` at repo root) | — |
+| ~~`iconoclast-vst-ui/`~~ | **Obsolete** — merged into `iconoclast`; standalone repo deleted | — |
 
 Example (lambda-terminal, from incident doc):
 
@@ -92,7 +93,7 @@ python3 -m pytest tests/test_unit.py tests/test_links.py -q -m "not github_io"
 
 diff <(curl -sL https://sqazi.sh/content/cv.txt) content/cv.txt
 
-for p in lambda-terminal pa2-car-plugin iconoclast-vst-ui neck-diagram-studio mhn-ai-agent-memory mystic-ai benchmark-euterpea; do
+for p in lambda-terminal pa2-car-plugin vst-ui neck-diagram-studio mhn-ai-agent-memory mystic-ai benchmark-euterpea; do
   printf "sqazi.sh/%s: " "$p"
   curl -sI -o /dev/null -w "%{http_code}\n" -L "https://sqazi.sh/$p/"
 done
@@ -109,5 +110,5 @@ rg -n 'sqazi\.sh/[a-z]' index.html content/projects.html content/cv.txt
 
 1. Do **not** re-extract URLs from scratch — refresh [`link-audit-YYYY-MM-DD.md`](link-audit-2026-06-02.md) only when copy or infra changes.
 2. If operator approves S3 work, run sync in `my-servers` then flip hrefs back to `sqazi.sh/<prefix>/` where 200.
-3. **iconoclast-vst-ui** needs operator: repo location or drop link permanently.
+3. **iconoclast-vst-ui** — resolved 2026-06-02: merged into **`shahzebqazi/iconoclast`** branch `iconoclast-vst-ui`; standalone repo deleted; S3 prefix **`vst-ui/`** (sync from private checkout — see `my-servers` alert).
 4. Site copy + handoffs committed 2026-06-02; re-probe after S3 sync before restoring `sqazi.sh/<prefix>/` hrefs.

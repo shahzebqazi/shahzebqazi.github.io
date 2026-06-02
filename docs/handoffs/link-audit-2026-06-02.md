@@ -176,7 +176,8 @@ Companion handoff: [`HANDOFF-LINK-COVERAGE.md`](HANDOFF-LINK-COVERAGE.md)
 ```text
 403	https://sqazi.sh/lambda-terminal/
 403	https://sqazi.sh/pa2-car-plugin/
-403	https://sqazi.sh/iconoclast-vst-ui/
+403	https://sqazi.sh/vst-ui/
+403	https://sqazi.sh/iconoclast-vst-ui/  # obsolete prefix; use vst-ui after sync
 403	https://sqazi.sh/neck-diagram-studio/
 403	https://sqazi.sh/mhn-ai-agent-memory/
 403	https://sqazi.sh/mystic-ai/

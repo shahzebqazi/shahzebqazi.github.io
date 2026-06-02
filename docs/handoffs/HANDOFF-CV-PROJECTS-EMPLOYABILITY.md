@@ -194,7 +194,7 @@ Use this rubric when editing. Score each area **Pass / Weak / Fail** in PR descr
 
 **Repo:** `my-servers` moon Sol — copy no longer hrefs 403 demos (see [`HANDOFF-LINK-COVERAGE.md`](HANDOFF-LINK-COVERAGE.md)).
 
-- [ ] S3 sync missing prefixes: `lambda-terminal/` (regressed 403 on 2026-06-02), `benchmark-euterpea/`, `mystic-ai/`, `mhn-ai-agent-memory/`, `neck-diagram-studio/`, `pa2-car-plugin/`, `iconoclast-vst-ui/` (source TBD).
+- [ ] S3 sync missing prefix: `vst-ui/` (source: `iconoclast` @ branch `iconoclast-vst-ui`; replaces obsolete `iconoclast-vst-ui/`).
 - [x] CloudFront subpath rewrite already exists for directory indexes.
 - [ ] After sync, re-test prefixes; optionally restore `sqazi.sh/<project>/` hrefs on projects + home.
 
