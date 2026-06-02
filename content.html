@@ -107,6 +107,7 @@
 </footer>
 
 <script src="assets/js/theme.js"></script>
+<script src="assets/js/plain-content.js"></script>
 <script>
 (function () {
   var params = new URLSearchParams(window.location.search);
@@ -170,7 +171,12 @@
       return res.text();
     })
     .then(function (text) {
-      contentEl.textContent = text;
+      var opts = { linkGithubReposToProjects: page === "cv" };
+      if (globalThis.PlainContent) {
+        PlainContent.renderInto(contentEl, text, opts);
+      } else {
+        contentEl.textContent = text;
+      }
     })
     .catch(function () {
       contentEl.textContent = "Content not available yet. Check back later.";

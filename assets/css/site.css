@@ -218,6 +218,26 @@ code {
   color: var(--color-text);
 }
 
+.page-content--plain a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.page-content--plain a:hover {
+  color: var(--color-link-hover);
+}
+
+.page-content--plain a:visited {
+  color: var(--color-link-visited);
+}
+
+.page-content--plain a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 #page-content:not(.page-content--plain):empty::before {
   content: "Loading…";
   color: var(--color-text-muted);
@@ -264,6 +284,10 @@ code {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.project-card[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 .projects-list > li,
