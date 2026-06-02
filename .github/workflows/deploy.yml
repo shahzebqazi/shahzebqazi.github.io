@@ -38,6 +38,7 @@ jobs:
             --exclude "infra/*" \
             --exclude "docs/*" \
             --exclude "tests/*" \
+            --exclude "pages/*" \
             --exclude "README.md" \
             --exclude "AGENTS.md" \
             --exclude "SYNC.md" \

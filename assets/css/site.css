@@ -333,6 +333,97 @@ code {
   color: var(--color-text-muted);
 }
 
+/* CV (content/cv.html) */
+.cv-page {
+  max-width: 100%;
+}
+
+.cv-lede {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.cv-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cv-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cv-location,
+.cv-contact {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.cv-section {
+  margin-top: 1.75rem;
+}
+
+.cv-section h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--ctp-subtext1);
+}
+
+.cv-section p,
+.cv-section ul {
+  margin: 0.5rem 0 0;
+  line-height: 1.55;
+}
+
+.cv-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.cv-highlight-list .project-hero {
+  max-height: 14rem;
+}
+
+.cv-strengths,
+.cv-links {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.cv-strengths li,
+.cv-links li {
+  margin-top: 0.35rem;
+}
+
+.cv-role {
+  margin-top: 1rem;
+}
+
+.cv-role h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cv-dates {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0.25rem 0 0;
+}
+
+.cv-role ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+}
+
 /* Minimal redirect page */
 .page--redirect {
   display: grid;

@@ -3,7 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Content &mdash; sqazi.sh</title>
+<title>Projects &mdash; Willy Worst &middot; sqazi.sh</title>
+<meta name="description" id="meta-description" content="Willy Worst — curated software projects: AI agents, macOS terminal, eval pipelines, Kotlin/Android.">
+<link rel="canonical" id="link-canonical" href="https://sqazi.sh/content.html?page=projects">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sqazi.sh">
+<meta property="og:title" id="og-title" content="Projects — Willy Worst · sqazi.sh">
+<meta property="og:description" id="og-description" content="Willy Worst — curated software projects: AI agents, macOS terminal, eval pipelines, Kotlin/Android.">
+<meta property="og:url" id="og-url" content="https://sqazi.sh/content.html?page=projects">
+<meta property="og:image" content="https://sqazi.sh/assets/cv-heroes/lambda-terminal.svg">
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var page = params.get("page") || "projects";
+  var pages = {
+    projects: {
+      title: "Projects — Willy Worst · sqazi.sh",
+      h1: "Projects",
+      description: "Willy Worst — curated software projects: AI agents, macOS terminal, eval pipelines, Kotlin/Android.",
+      canonical: "https://sqazi.sh/content.html?page=projects",
+      ogImage: "https://sqazi.sh/assets/cv-heroes/lambda-terminal.svg"
+    },
+    cv: {
+      title: "CV — Willy Worst · Software Engineer · sqazi.sh",
+      h1: "Willy Worst — Software Engineer",
+      description: "Willy Worst — software engineer and AI agent builder in Toronto. CV, GitHub pins, and contact for hiring.",
+      canonical: "https://sqazi.sh/content.html?page=cv",
+      ogImage: "https://sqazi.sh/assets/cv-heroes/mastodon-agent.webp"
+    },
+    papers: {
+      title: "Papers — Willy Worst · sqazi.sh",
+      h1: "Papers",
+      description: "Writing and notes by Willy Worst (sqazi.sh).",
+      canonical: "https://sqazi.sh/content.html?page=papers",
+      ogImage: "https://sqazi.sh/assets/cv-heroes/lambda-terminal.svg"
+    },
+    blog: {
+      title: "Blog — Willy Worst · sqazi.sh",
+      h1: "Blog",
+      description: "Blog posts by Willy Worst (sqazi.sh).",
+      canonical: "https://sqazi.sh/content.html?page=blog",
+      ogImage: "https://sqazi.sh/assets/cv-heroes/lambda-terminal.svg"
+    }
+  };
+  var meta = pages[page] || pages.projects;
+  document.title = meta.title;
+  var desc = document.getElementById("meta-description");
+  if (desc) desc.setAttribute("content", meta.description);
+  var canon = document.getElementById("link-canonical");
+  if (canon) canon.setAttribute("href", meta.canonical);
+  var ogTitle = document.getElementById("og-title");
+  if (ogTitle) ogTitle.setAttribute("content", meta.title);
+  var ogDesc = document.getElementById("og-description");
+  if (ogDesc) ogDesc.setAttribute("content", meta.description);
+  var ogUrl = document.getElementById("og-url");
+  if (ogUrl) ogUrl.setAttribute("content", meta.canonical);
+  var ogImg = document.querySelector('meta[property="og:image"]');
+  if (ogImg) ogImg.setAttribute("content", meta.ogImage);
+  document.documentElement.setAttribute("data-content-page", page);
+  document.documentElement.setAttribute("data-content-h1", meta.h1);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -70,32 +130,41 @@
     return;
   }
 
+  var defaultH1 = document.documentElement.getAttribute("data-content-h1");
   var labels = { projects: "Projects", papers: "Papers", cv: "CV", blog: "Blog" };
-  titleEl.textContent = labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
-  document.title = titleEl.textContent + " — sqazi.sh";
+  titleEl.textContent = defaultH1 || labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
 
-  if (page === "projects") {
-    fetch("content/projects.html")
+  function loadHtmlFragment(url, selector, failLabel) {
+    fetch(url)
       .then(function (res) {
         if (!res.ok) throw new Error(res.status);
         return res.text();
       })
       .then(function (html) {
         var doc = new DOMParser().parseFromString(html, "text/html");
-        var root = doc.querySelector(".projects-page");
+        var root = doc.querySelector(selector);
         contentEl.className = "";
         if (root) {
           contentEl.innerHTML = "";
           contentEl.appendChild(document.importNode(root, true));
         } else {
           contentEl.className = "page-content--plain";
-          contentEl.textContent = "Projects could not be loaded.";
+          contentEl.textContent = failLabel + " could not be loaded.";
         }
       })
       .catch(function () {
         contentEl.className = "page-content--plain";
-        contentEl.textContent = "Projects could not be loaded. Check back later.";
+        contentEl.textContent = failLabel + " could not be loaded. Check back later.";
       });
+  }
+
+  if (page === "projects") {
+    loadHtmlFragment("content/projects.html", ".projects-page", "Projects");
+    return;
+  }
+
+  if (page === "cv") {
+    loadHtmlFragment("content/cv.html", ".cv-page", "CV");
     return;
   }
 

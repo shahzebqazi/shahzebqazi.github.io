@@ -7,7 +7,8 @@ Three things share your bio and need to stay consistent:
 | Surface | Repo | What renders |
 |---|---|---|
 | **GitHub profile** | `shahzebqazi/shahzebqazi` | `README.md` → shown on github.com/shahzebqazi |
-| **sqazi.sh (AWS)** | `shahzebqazi/my-website` (private) | `index.html` → S3 + CloudFront at sqazi.sh |
+| **sqazi.sh (AWS)** | this repo | Static site → S3 + CloudFront (`deploy.yml`) |
+| **shahzebqazi.github.io** | this repo `pages/` | Redirect only → sqazi.sh (`pages-redirect.yml`) |
 | **Dynamic content** | same repo, `/content/` | Projects: `content/projects.html`; Papers, CV, Blog: `content/*.txt` — fetched by `content.html?page=` |
 
 ---

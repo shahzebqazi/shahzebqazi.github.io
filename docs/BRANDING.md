@@ -11,12 +11,12 @@ This document is the **source of truth** for how personal surfaces relate. When 
 | Priority | Surface | Repo | URL | Role |
 |----------|---------|------|-----|------|
 | 1 | **CV (human)** | `shahzebqazi.github.io` | [sqazi.sh/content.html?page=cv](https://sqazi.sh/content.html?page=cv) | **Main résumé page** — share in applications, email sig, Featured |
-| 1 | **CV (machine)** | same | [sqazi.sh/content/cv.txt](https://sqazi.sh/content/cv.txt) | Agents, tailoring, ATS paste source — edit `content/cv.txt` only |
+| 1 | **CV (machine)** | same | [sqazi.sh/content/cv.txt](https://sqazi.sh/content/cv.txt) | Agents, tailoring, ATS paste source — keep in sync with `content/cv.html` |
 | 2 | **Portfolio home** | same | [sqazi.sh](https://sqazi.sh/) | About, narrative, nav to Projects / CV / Blog |
 | 2 | **Projects** | same | [sqazi.sh/content.html?page=projects](https://sqazi.sh/content.html?page=projects) | Curated shipped work |
 | 3 | **GitHub profile** | `shahzebqazi` | [github.com/shahzebqazi](https://github.com/shahzebqazi) | Code identity; README mirrors **home** story, links to CV |
 | 4 | **Link hub** | `links` | [shahzeb.me](https://shahzeb.me/) | Family / friends / clients — social + ventures table |
-| 4 | **Links redirect** | `shahzebqazi.github.io` | [sqazi.sh/links.html](https://sqazi.sh/links.html) | 302 to **shahzeb.me** (do not duplicate link tables here) |
+| 4 | **Links redirect** | same | [sqazi.sh/links.html](https://sqazi.sh/links.html) | Redirect to **shahzeb.me** (do not duplicate link tables here) |
 | 5 | **LinkedIn** | `social/linkedin` (copy only) | [linkedin.com/in/lambdaqazi](https://www.linkedin.com/in/lambdaqazi) | Recruiter search — **derived** from CV + `profile/*.md` |
 | — | **Tailored CVs** | `social/linkedin` | `applications/resumes/tailored/*` | Per-job variants — never overwrite `content/cv.txt` |
 
@@ -41,6 +41,7 @@ CV: https://sqazi.sh/content.html?page=cv
 | Legal / forms | Willy S. Qazi | Government, payroll, contracts only |
 | Email | **code@sqazi.sh** | Not gmail for professional applies |
 | Portfolio | **https://sqazi.sh** | Never `shahzebqazi.github.io` in outward copy |
+| Legacy host | **https://shahzebqazi.github.io** | Redirects to sqazi.sh (same path/query); not a second site |
 | GitHub | **https://github.com/shahzebqazi** | |
 | CV (share link) | **https://sqazi.sh/content.html?page=cv** | Primary CTA for recruiters |
 | CV (fetch) | **https://sqazi.sh/content/cv.txt** | For agents and scripts |
@@ -78,7 +79,9 @@ Do not maintain two competing master CV files.
 
 | Path | Edit when |
 |------|-----------|
-| `shahzebqazi.github.io/content/cv.txt` | Any CV fact or reference summary |
+| `shahzebqazi.github.io/content/cv.html` | Human CV layout, highlights, hero art |
+| `shahzebqazi.github.io/content/cv.txt` | Any CV fact or reference summary (machine) |
+| `shahzebqazi.github.io/assets/cv-heroes/` | Vendored canonical project art for CV |
 | `shahzebqazi.github.io/index.html` | Home / About narrative |
 | `shahzebqazi.github.io/content/projects.html` | Project cards |
 | `shahzebqazi.github.io/links.html` | Redirect target for link hub only |
